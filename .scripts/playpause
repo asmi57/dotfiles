@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+player=$(cat $HOME/.current_player)
+
+echo player=$player
+
+if [[ ! $(playerctl -p $player status) ]]; then
+	echo player not found: $player
+	player=$(playerctl -l | head -n 1)
+	echo $player > $HOME/.current_player
+fi
+
+playerctl -p $player play-pause
+

@@ -1,0 +1,43 @@
+
+# super key
+set $mod Mod4
+
+
+include media
+include windows
+include workspaces
+include resize
+
+
+
+# general controls
+
+
+# restart i3 in place
+bindsym $mod+Shift+r restart
+
+# kill
+bindsym $mod+q kill
+
+# rofi menus
+bindsym $mod+d exec --no-startup-id ~/.config/rofi/normal/launcher.sh
+bindsym $mod+Shift+e exec --no-startup-id ~/.config/rofi/powermenu/launcher.sh
+bindsym $mod+w exec --no-startup-id ~/.config/rofi/window/launcher.sh
+
+# kitty terminal
+bindsym $mod+Return exec --no-startup-id open_tmux_window
+bindsym $mod+Shift+Return exec --no-startup-id kitty
+
+
+# clip screen
+bindsym Print exec screenclip
+
+# cycle wallpaper
+bindsym $mod+b exec --no-startup-id random_wallpaper
+
+# toggle compositor
+bindsym $mod+p exec --no-startup-id toggle_picom
+
+# toggle cursor with unclutter
+bindsym $mod+m exec --no-startup-id toggle_cursor
+

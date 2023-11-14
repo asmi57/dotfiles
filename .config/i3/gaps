@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# gaps binds
+bindsym $mod+o gaps outer all plus 2
+bindsym $mod+i gaps inner all plus 2
+bindsym $mod+Shift+o gaps outer all minus 2
+bindsym $mod+Shift+i gaps inner all minus 2

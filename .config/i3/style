@@ -1,0 +1,20 @@
+
+# class                 border  bground  text    indicator  child_border
+client.focused          #c57bdb #c57bdb  #c57bdb #c57bdb    #c57bdb
+client.focused_inactive #494d55 #494d55  #494d55 #494d55    #494d55
+client.unfocused        #494d55 #494d55  #494d55 #494d55    #494d55
+client.urgent           #494d55 #494d55  #494d55 #494d55    #494d55
+client.placeholder      #494d55 #494d55  #494d55 #494d55    #494d55
+
+# client.background       #626880
+
+# for_window [all] title_format "%class"
+for_window [all] border pixel 3
+for_window [class="Qemu-system-x86_64"] floating enable
+
+# bar {
+  # status_command i3status -c ~/.config/i3/i3status.conf
+# }
+
+gaps outer 7px
+gaps inner 7px

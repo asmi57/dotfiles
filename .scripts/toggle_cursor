@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+killall unclutter || unclutter --timeout 0.1 &
+
+

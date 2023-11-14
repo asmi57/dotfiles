@@ -1,0 +1,34 @@
+#!/bin/zsh
+
+source ~/.varrc
+
+alias rc="source ~/.zshrc"
+
+alias picom="picom -b --experimental-backend"
+alias 7z="p7zip"
+alias blutui="bluetuith"
+alias mp="ncmpcpp"
+alias clock="tty-clock -t -c"
+alias pmixer="pulsemixer"
+alias pmi="pulsemixer"
+alias dae="daemonize"
+
+alias vim="nvim"
+alias vi="nvim"
+
+alias ..="c .."
+alias ...="c ../.."
+alias ....="c ../../.."
+
+alias gs="git status"
+
+
+source cd_funcs
+if [[ $(ps -A | grep Xorg) || $TMUX ]]; then
+	c
+else
+	setfont -d
+	cd
+	source ~/.varrc
+	startx > /dev/null 2> /dev/null
+fi

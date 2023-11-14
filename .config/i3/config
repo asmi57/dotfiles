@@ -1,0 +1,14 @@
+
+# super key
+set $mod Mod4
+
+include binds/master
+include gaps
+include style
+
+exec_always --no-startup-id ~/.scripts/i3setup
+
+
+
+
+

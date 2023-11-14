@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+
+export EDITOR="nvim"
+
+export XDG_CONFIG_HOME=$HOME/.config
+export BACKLIGHT="/sys/class/backlight/intel_backlight"
+
+
+# export PATH="$PATH:path"
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.ghcup/bin"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.scripts"
+export PATH="$PATH:$HOME/.local/share/coursier/bin"
+export PATH="$PATH:$HOME/.ti84/bin"
+
+
+wallpaper_dir="$HOME/.wallpapers"
+
+ln -sf $wallpaper_dir $HOME/.wallpaper_dir

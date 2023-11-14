@@ -1,0 +1,23 @@
+
+bindsym $mod+r mode "resize"
+mode "resize" {
+
+        bindsym Left resize shrink width 10 px or 2 ppt
+        bindsym Down resize grow height 10 px or 2 ppt
+        bindsym Up resize shrink height 10 px or 2 ppt
+        bindsym Right resize grow width 10 px or 2 ppt
+
+        bindsym Shift+Left resize shrink width 30 px or 10 ppt
+        bindsym Shift+Down resize grow height 30 px or 10 ppt
+        bindsym Shift+Up resize shrink height 30 px or 10 ppt
+        bindsym Shift+Right resize grow width 30 px or 10 ppt
+
+        bindsym Ctrl+Left resize shrink width 60 px or 15 ppt
+        bindsym Ctrl+Down resize grow height 60 px or 15 ppt
+        bindsym Ctrl+Up resize shrink height 60 px or 15 ppt
+        bindsym Ctrl+Right resize grow width 60 px or 15 ppt
+
+
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
