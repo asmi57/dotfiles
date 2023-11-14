@@ -1,4 +1,5 @@
 
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 
@@ -19,4 +20,8 @@ vim.opt.listchars = {
 	nbsp = '+'
 }
 -- os.execute("echo \xe2\x94\x82 | xclip -i -sel clip")
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.opt.termguicolors = true
 
