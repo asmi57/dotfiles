@@ -23,6 +23,7 @@ require("nvim-tree").setup({
 
 		vim.keymap.set('n', 'C', api.tree.change_root_to_node, opts)
 		vim.keymap.set('n', 'H', api.tree.toggle_hidden_filter, opts)
+		vim.keymap.set('n', '<leader>e', api.tree.close, opts)
 
 	end
 })
