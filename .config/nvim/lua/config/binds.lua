@@ -50,8 +50,8 @@ bind('t', '<C-x>', vim.cmd.stopinsert)
 -- Plugin specific
 
 -- Telescope
-local success, builtins = pcall(require, 'telescope.builtin')
-if success then
+local ok, builtins = pcall(require, 'telescope.builtin')
+if ok then
 	bind('n', '<leader>ff', builtins.find_files)
 	bind('n', '<leader>fb', builtins.buffers)
 	bind('n', '<leader>fw', builtins.live_grep)
@@ -59,8 +59,8 @@ if success then
 end
 
 -- NvimTree
-local success, nvim_tree_api = pcall(require, 'nvim-tree.api')
-if success then
+local ok, nvim_tree_api = pcall(require, 'nvim-tree.api')
+if ok then
 	bind('n', '<leader>e', nvim_tree_api.tree.open)
 end
 
