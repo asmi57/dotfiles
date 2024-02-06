@@ -1,0 +1,5 @@
+#!/bin/env sh
+
+right_monitor
+mouse_accel
+set_wallpaper

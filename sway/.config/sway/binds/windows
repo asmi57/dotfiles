@@ -1,0 +1,34 @@
+
+# attach tmux session floating
+
+# window controls
+
+bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+t layout tabbed
+bindsym $mod+s layout stacking
+bindsym $mod+a layout default
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space   focus mode_toggle
+bindsym $mod+Shift+c focus parent
+bindsym $mod+c       focus child
+
+bindsym $mod+Shift+z move scratchpad
+bindsym $mod+z scratchpad show
+
+floating_modifier $mod
+
+
+

@@ -1,0 +1,18 @@
+
+# super key
+set $mod Mod4
+
+include binds/master
+include gaps
+include style
+include sway
+
+exec_always --no-startup-id ~/.scripts/sway_setup
+
+set $terminal kitty
+# set $terminal_tmux "test $(tmux ls | wc -l) -eq 0 && kitty tmux || kitty tmux a"
+set $terminal_tmux "kitty tmux new -A -s 0"
+
+
+
+

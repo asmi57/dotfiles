@@ -1,0 +1,8 @@
+#!/bin/env sh
+
+pointers=$(xinput list | grep "pointer" | cut -d '=' -f 2 | cut -f 1 | grep ".")
+
+for id in $(echo -ne $pointers); do
+	xinput --set-prop $id 'libinput Accel Profile Enabled' 0, 1
+	# echo pointer $id
+done

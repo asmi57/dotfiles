@@ -1,0 +1,17 @@
+#!/bin/env sh
+
+max_bri=1023
+percent=$1
+
+if test ! $1; then
+	current=$(cat $BACKLIGHT/brightness)
+	percent=$(expr $(expr $current \* 100) / $max_bri)
+fi
+
+new_bri=$(expr $(expr $percent \* $max_bri) / 100)
+
+if test $1; then
+	echo $new_bri | sudo tee $BACKLIGHT/brightness > /dev/null
+fi
+
+echo $percent% = $(cat $BACKLIGHT/brightness)
