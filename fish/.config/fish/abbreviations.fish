@@ -1,7 +1,7 @@
 
 abbr --add refish source $FISH_DIRECTORY/config.fish
 
-alias eza="eza --sort type --icons --git"
+alias eza="eza --sort type --icons --git --git-ignore"
 abbr --add l  eza -l
 abbr --add la eza -la
 abbr --add ls eza
