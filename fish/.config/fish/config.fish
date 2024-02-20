@@ -13,17 +13,16 @@ set -gx BACKLIGHT /sys/class/backlight/gmux_backlight
 set -gx WALLPAPER_DIR $HOME/media/wallpapers
 
 set -gx CEDEV /opt/CEdev
-set -gx GOPATH $XDG_DATA_HOME/go
-set -gx CARGO_HOME $XDG_DATA_HOME/cargo
-set -gx RUSTUP_HOME $XDG_DATA_HOME/rustup
-set -gx JAVAPATH "$XDG_CONFIG_HOME"/java
-set -gx _JAVA_OPTIONS -Djava.util.prefs.userRoot=$JAVAPATH
-set -gx GRADLE_USER_HOME $XDG_DATA_HOME/gradle
-set -gx GNUPGHOME $XDG_DATA_HOME/gnupg
+set -gx GOPATH                $XDG_DATA_HOME/go
+set -gx CARGO_HOME            $XDG_DATA_HOME/cargo
+set -gx RUSTUP_HOME           $XDG_DATA_HOME/rustup
+set -gx GRADLE_USER_HOME      $XDG_DATA_HOME/gradle
+set -gx GNUPGHOME             $XDG_DATA_HOME/gnupg
+set -gx PYTHON_HISTORY        $XDG_STATE_HOME/python/history
 set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
+set -gx JAVAPATH              $XDG_CONFIG_HOME/java
+set -gx _JAVA_OPTIONS -Djava.util.prefs.userRoot=$JAVAPATH
 set -gx GHCUP_USE_XDG_DIRS true
-set -gx PYTHON_HISTORY $XDG_STATE_HOME/python/history
-alias --save yarn "yarn --use-yarnrc '$XDG_CONFIG_HOME/yarn/config'" > /dev/null
 
 set -e PATH
 set -gx PATH $PATH /usr/bin
@@ -40,9 +39,9 @@ set -gx PATH $PATH $CEDEV/bin
 set -gx PATH $PATH $CARGO_HOME/bin
 
 set -gx XDG_CONFIG_HOME $HOME/.config
-set -gx XDG_DATA_HOME $HOME/.local
-set -gx XDG_CACHE_HOME $XDG_DATA_HOME/cache
-set -gx XDG_STATE_HOME $XDG_DATA_HOME/state
+set -gx XDG_DATA_HOME   $HOME/.local/share
+set -gx XDG_CACHE_HOME  $HOME/.local/cache
+set -gx XDG_STATE_HOME  $HOME/.local/state
 
 set -gx XINITRC $XDG_CONFIG_HOME/X11/xinitrc
 set -gx XAUTHORITY $XDG_CONFIG_HOME/X11/Xauthority
