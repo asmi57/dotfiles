@@ -7,6 +7,10 @@ if status is-interactive
 	thefuck --alias    | source
 end
 
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx XDG_DATA_HOME   $HOME/.local/share
+set -gx XDG_CACHE_HOME  $HOME/.local/cache
+set -gx XDG_STATE_HOME  $HOME/.local/state
 
 set -gx EDITOR nvim
 set -gx BACKLIGHT /sys/class/backlight/gmux_backlight
@@ -33,15 +37,11 @@ set -gx PATH $PATH /usr/local/bin
 set -gx PATH $PATH /usr/local/sbin
 set -gx PATH $PATH /usr/lib/rustup/bin
 set -gx PATH $PATH $XDG_DATA_HOME/bin
+set -gx PATH $PATH $XDG_DATA_HOME/nvim/mason/bin
 set -gx PATH $PATH $HOME/.scripts
 set -gx PATH $PATH $HOME/.android/sdk/platform-tools
 set -gx PATH $PATH $CEDEV/bin
 set -gx PATH $PATH $CARGO_HOME/bin
-
-set -gx XDG_CONFIG_HOME $HOME/.config
-set -gx XDG_DATA_HOME   $HOME/.local/share
-set -gx XDG_CACHE_HOME  $HOME/.local/cache
-set -gx XDG_STATE_HOME  $HOME/.local/state
 
 set -gx XINITRC $XDG_CONFIG_HOME/X11/xinitrc
 set -gx XAUTHORITY $XDG_CONFIG_HOME/X11/Xauthority
