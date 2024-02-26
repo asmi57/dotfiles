@@ -1,5 +1,4 @@
 return {
-
 	number = true,
 	relativenumber = true,
 	-- Screenspace {{{
