@@ -13,6 +13,11 @@ bind('n', '<leader><tab>', function() -- toggle hard tabs
 end, { desc = "Toggle hard tabs" })
 bind('t', '<C-x>', vim.cmd.stopinsert) -- escape terminal mode
 
+bind({ 'n', 'i', 'v' }, "<S-Left>",  "<Left>")
+bind({ 'n', 'i', 'v' }, "<S-Right>", "<Right>")
+bind({ 'n', 'i', 'v' }, "<S-Up>",    "<Up>")
+bind({ 'n', 'i', 'v' }, "<S-Down>",  "<Down>")
+
 -- }}}
 -- Navigate buffers {{{
 

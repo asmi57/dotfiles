@@ -39,19 +39,29 @@ M.misc_config = function()
 end
 
 M.lsp_keybinds = function(bufnr)
+	local v = vim
 	local bind = require('functions').keybind({
 		noremap = true,
 		silent = true,
 		buffer = bufnr
 	})
 
-	vim.g.mapleader = ' '
-	bind('n', '<leader>k',  vim.lsp.buf.hover,         { desc = "Hover information" })
-	bind('n', '<leader>a',  vim.lsp.buf.code_action,   { desc = "List code actions" })
-	bind('n', '<leader>df', vim.diagnostic.open_float, { desc = "Open diagnostic in float" })
-	bind('n', '<leader>rn', vim.lsp.buf.rename,        { desc = "Rename symbol" })
-	bind('n', 'gd', vim.lsp.buf.definition,            { desc = "Go to definition" })
-	bind('n', 'gr', vim.lsp.buf.references,            { desc = "Go to references" })
+	local lspsafe = function(f)
+		return function()
+			if v.lsp.buf.server_ready()
+			then f()
+			else print("LSP Not Ready!") end
+		end
+	end
+
+	v.g.mapleader = ' '
+	bind('n', '<leader>k',  lspsafe(v.lsp.buf.hover),         { desc = "Hover information" })
+	bind('n', '<leader>a',  lspsafe(v.lsp.buf.code_action),   { desc = "List code actions" })
+	bind('n', '<leader>df', lspsafe(v.diagnostic.open_float), { desc = "Open diagnostic in float" })
+	bind('n', '<leader>rn', lspsafe(v.lsp.buf.rename),        { desc = "Rename symbol" })
+	bind('n', 'gd',         lspsafe(v.lsp.buf.definition),    { desc = "Go to definition" })
+	bind('n', 'gD',         lspsafe(v.lsp.buf.declaration),   { desc = "Go to declaration" })
+	bind('n', 'gr',         lspsafe(v.lsp.buf.references),    { desc = "Go to references" })
 end
 
 return M

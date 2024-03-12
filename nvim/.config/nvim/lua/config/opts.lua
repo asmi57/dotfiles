@@ -1,11 +1,16 @@
 return {
+	tildeop = true,
 	number = true,
 	relativenumber = true,
+	termguicolors = true,
+	ignorecase = true,
+	smartcase = true,
 	-- Screenspace {{{
 
 	wrap = false,
 	signcolumn = 'yes:2',
 	scrolloff = 10,
+	sidescrolloff = 30,
 	foldmethod = 'marker',
 
 	-- }}}
@@ -23,6 +28,4 @@ return {
 	expandtab = false,
 
 	-- }}}
-	termguicolors = true,
 }
-
