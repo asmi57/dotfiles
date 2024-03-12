@@ -13,7 +13,7 @@ set -gx XDG_CACHE_HOME  $HOME/.local/cache
 set -gx XDG_STATE_HOME  $HOME/.local/state
 
 set -gx EDITOR nvim
-set -gx BACKLIGHT /sys/class/backlight/gmux_backlight
+set -gx BACKLIGHT /sys/class/backlight/intel_backlight
 set -gx WALLPAPER_DIR $HOME/media/wallpapers
 
 set -gx CEDEV /opt/CEdev
@@ -24,7 +24,7 @@ set -gx GRADLE_USER_HOME      $XDG_DATA_HOME/gradle
 set -gx GNUPGHOME             $XDG_DATA_HOME/gnupg
 set -gx PYTHON_HISTORY        $XDG_STATE_HOME/python/history
 set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
-set -gx JAVAPATH              $XDG_CONFIG_HOME/java
+set -gx JAVAPATH             "$XDG_CONFIG_HOME"/java
 set -gx _JAVA_OPTIONS -Djava.util.prefs.userRoot=$JAVAPATH
 set -gx GHCUP_USE_XDG_DIRS true
 
