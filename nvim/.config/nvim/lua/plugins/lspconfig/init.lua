@@ -14,9 +14,7 @@ return {
 	{
 		'williamboman/mason-lspconfig.nvim',
 		config = function()
-			require('mason-lspconfig').setup({
-				ensure_installed = language_servers,
-			})
+			require('mason-lspconfig').setup()
 		end
 	},
 	{

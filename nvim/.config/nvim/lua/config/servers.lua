@@ -3,7 +3,7 @@ return {
 	'lua_ls',
 	'jdtls',
 	-- 'tsserver',
-	-- 'clangd',
+	'clangd',
 	-- 'hls',
 	-- 'gopls'
 }
