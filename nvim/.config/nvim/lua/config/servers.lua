@@ -5,5 +5,5 @@ return {
 	-- 'tsserver',
 	'clangd',
 	-- 'hls',
-	-- 'gopls'
+	'gopls'
 }
