@@ -4,6 +4,6 @@ return {
 	'jdtls',
 	-- 'tsserver',
 	'clangd',
-	-- 'hls',
+	'hls',
 	'gopls'
 }

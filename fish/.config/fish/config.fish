@@ -24,8 +24,6 @@ set -gx GRADLE_USER_HOME      $XDG_DATA_HOME/gradle
 set -gx GNUPGHOME             $XDG_DATA_HOME/gnupg
 set -gx PYTHON_HISTORY        $XDG_STATE_HOME/python/history
 set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
-set -gx JAVAPATH             "$XDG_CONFIG_HOME"/java
-set -gx _JAVA_OPTIONS -Djava.util.prefs.userRoot=$JAVAPATH
 set -gx GHCUP_USE_XDG_DIRS true
 
 set -e PATH
@@ -37,11 +35,14 @@ set -gx PATH $PATH /usr/local/bin
 set -gx PATH $PATH /usr/local/sbin
 set -gx PATH $PATH /usr/lib/rustup/bin
 set -gx PATH $PATH $XDG_DATA_HOME/bin
+set -gx PATH $PATH $XDG_DATA_HOME/ghcup/bin
 set -gx PATH $PATH $XDG_DATA_HOME/nvim/mason/bin
 set -gx PATH $PATH $HOME/.scripts
 set -gx PATH $PATH $HOME/.android/sdk/platform-tools
 set -gx PATH $PATH $CEDEV/bin
 set -gx PATH $PATH $CARGO_HOME/bin
+set -gx PATH $PATH $HOME/dev/suckless/bin
 
 set -gx XINITRC $XDG_CONFIG_HOME/X11/xinitrc
 set -gx XAUTHORITY $XDG_CONFIG_HOME/X11/Xauthority
+
