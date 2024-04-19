@@ -1,4 +1,4 @@
-function yarn --description alias\ yarn\ yarn\ --use-yarnrc\ \'/home/asmi/.config/yarn/config\'
- command yarn --use-yarnrc '/home/asmi/.config/yarn/config' $argv
+function yarn --description alias\ yarn\ yarn\ --use-yarnrc\ \'/yarn/config\'
+ command yarn --use-yarnrc '/yarn/config' $argv
         
 end

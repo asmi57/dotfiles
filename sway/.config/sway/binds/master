@@ -15,12 +15,12 @@ bindsym $mod+Shift+r exec swaymsg reload
 bindsym $mod+q kill
 
 # rofi menus
-bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $mod+w exec --no-startup-id rofi -show window
+bindsym $mod+d exec --no-startup-id fish -c "rofi -show drun"
+bindsym $mod+w exec --no-startup-id fish -c "rofi -show window"
 
 # kitty terminal
-bindsym $mod+Return exec --no-startup-id $terminal
-bindsym $mod+Shift+Return exec --no-startup-id $terminal_tmux
+bindsym $mod+Return       exec $terminal
+bindsym $mod+Shift+Return exec $terminal_tmux
 
 # clip screen
 bindsym Print exec screenclip_sway
