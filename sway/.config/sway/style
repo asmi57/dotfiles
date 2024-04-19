@@ -8,8 +8,7 @@ client.unfocused          #494D55   #494D55   #A6ADC8   #494D55   #494D55
 client.urgent             #494D55   #494D55   #A6ADC8   #494D55   #494D55
 client.placeholder        #494D55   #494D55   #A6ADC8   #494D55   #494D55
 
-for_window [class=".*"] border pixel 2
-
+for_window [all] border pixel 2
 smart_borders off
 
 for_window [class="^discord$"] {
@@ -17,4 +16,10 @@ for_window [class="^discord$"] {
 	move to scratchpad
 	scratchpad show
 }
+for_window [app_id="^org.kde.kcalc$"] {
+	floating enable
+	resize set width 890 px
+	resize set height 528 px
+}
+
 

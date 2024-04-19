@@ -25,3 +25,5 @@ bindsym $mod+Shift+Return exec $terminal_tmux
 # clip screen
 bindsym Print exec screenclip_sway
 
+bindsym $mod+b exec firefox
+bindsym $mod+m exec calculator
