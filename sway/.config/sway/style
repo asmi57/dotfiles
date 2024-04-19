@@ -20,6 +20,7 @@ for_window [app_id="^org.kde.kcalc$"] {
 	floating enable
 	resize set width 890 px
 	resize set height 528 px
+	opacity set 0.3
 }
 
 
