@@ -68,17 +68,4 @@ if oil_ok then
 end
 
 -- }}}
--- Harpoon {{{
-
-local harpoon_ok, harpoon = pcall(require, 'harpoon')
-if harpoon_ok then
-	local harpoon_ui = require('harpoon.ui')
-	local harpoon_mark = require('harpoon.mark')
-	
-	bind('n', '<leader>m', harpoon_mark.add_file, { desc = "Mark file" })
-	bind('n', '<leader>h', harpoon_ui.toggle_quick_menu, { desc = "Open Marklist" })
-
-end
-
--- }}}
 -- }}}

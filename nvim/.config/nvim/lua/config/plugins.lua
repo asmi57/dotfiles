@@ -17,7 +17,6 @@ return {
 	require_or_nil('plugins.treesitter'),
 	require_or_nil('plugins.vgit'),
 	require_or_nil('plugins.leap'),
-	-- require_or_nil('plugins.harpoon'),
 	-- require_or_nil('plugins.which-key'),
 	require_or_nil('plugins.rust'),
 	require_or_nil('plugins.nvim-cmp'),
