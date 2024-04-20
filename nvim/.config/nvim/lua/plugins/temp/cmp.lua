@@ -14,31 +14,31 @@ end
 
 --   פּ ﯟ   some other good icons
 local kind_icons = {
-	Text = "",
-	Method = "m",
-	Function = "",
+	Text = "󱩾",
+	Method = "M",
+	Function = "󰊕",
 	Constructor = "",
-	Field = "",
-	Variable = "",
-	Class = "",
+	Field = "",
+	Variable = "",
+	Class = "",
 	Interface = "",
 	Module = "",
 	Property = "",
 	Unit = "",
-	Value = "",
+	Value = "#",
 	Enum = "",
-	Keyword = "",
+	Keyword = "",
 	Snippet = "",
-	Color = "",
-	File = "",
+	Color = "",
+	File = "",
 	Reference = "",
-	Folder = "",
+	Folder = "",
 	EnumMember = "",
-	Constant = "",
+	Constant = "ℇ",
 	Struct = "",
 	Event = "",
-	Operator = "",
-	TypeParameter = "",
+	Operator = "",
+	TypeParameter = "",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
@@ -60,8 +60,7 @@ cmp.setup({
 			c = cmp.mapping.close(),
 		},
 		-- Accept currently selected item. If none selected, `select` first item.
-		-- Set `select` to `false` to only confirm explicitly selected items.
-		["<CR>"] = cmp.mapping.confirm { select = true },
+		["<CR>"] = cmp.mapping.confirm { select = false },
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
@@ -96,10 +95,10 @@ cmp.setup({
 	},
 	sources = {
 		{ name = "nvim_lsp" },
-		-- { name = "luasnip" },
-		{ name = "buffer" },
-		{ name = "crates"},
 		{ name = "path" },
+		-- { name = "luasnip" },
+		-- { name = "buffer" },
+		-- { name = "crates"},
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
@@ -113,3 +112,21 @@ cmp.setup({
 		native_menu = false,
 	},
 })
+
+cmp.setup.cmdline('/', {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = { name = 'buffer' }
+})
+
+cmp.setup.cmdline(':', {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = cmp.config.sources({
+		name = 'path'
+	}, {
+		{
+			name = 'cmdline',
+			option = { ignore_cmds = { 'Man', '!' } }
+		}
+	}),
+})
+

@@ -12,6 +12,7 @@ return {
 	require_or_nil('plugins.catppuccin'),
 	require_or_nil('plugins.plenary'),
 	require_or_nil('plugins.telescope'),
+	require_or_nil('plugins.noice'),
 	require_or_nil('plugins.oil'),
 	require_or_nil('plugins.indent-blankline'),
 	require_or_nil('plugins.treesitter'),
