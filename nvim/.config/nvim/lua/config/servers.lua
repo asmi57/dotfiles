@@ -6,5 +6,6 @@ return {
 	'clangd',
 	'hls',
 	'gopls',
-	'pyright'
+	'pyright',
+	'cssls'
 }
