@@ -13,7 +13,7 @@ set -gx XDG_CACHE_HOME  $HOME/.local/cache
 set -gx XDG_STATE_HOME  $HOME/.local/state
 
 set -gx EDITOR nvim
-set -gx BACKLIGHT /sys/class/backlight/intel_backlight
+set -gx BACKLIGHT /sys/class/backlight/amdgpu_bl1
 set -gx WALLPAPER_DIR $HOME/media/wallpapers
 
 set -gx CEDEV /opt/CEdev

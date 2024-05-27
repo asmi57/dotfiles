@@ -22,5 +22,4 @@ for_window [app_id="^org.kde.kcalc$"] {
 	resize set height 528 px
 }
 
-include fx
 

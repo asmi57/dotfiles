@@ -1,12 +1,9 @@
 #!/bin/env sh
 
-
 killall swaybg
-
 swaybg --image $WALLPAPER_DIR/catppuccin.png &
 
 killall swaync
-
 swaync &
 
 disown
