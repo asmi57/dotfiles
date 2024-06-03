@@ -1,3 +1,8 @@
 #!/bin/env sh
 
-grim -g "$(slurp)" - | wl-copy -timage/png
+set -x
+
+grim -g "$(slurp)" - > $XDG_RUNTIME_DIR/snip.png
+name=$(rofi -dmenu -p "{}.png") \
+	&& cp $XDG_RUNTIME_DIR/snip.png $HOME/$name.png \
+	|| cat $XDG_RUNTIME_DIR/snip.png | wl-copy

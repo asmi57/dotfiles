@@ -48,7 +48,7 @@ M.lsp_keybinds = function(bufnr)
 
 	local lspsafe = function(f)
 		return function()
-			if v.lsp.buf.server_ready()
+			if true -- v.lsp.buf.server_ready()
 			then f()
 			else print("LSP Not Ready!") end
 		end
