@@ -1,2 +1,2 @@
 #!/bin/env sh
-playerctl -l | dmenu > $XDG_RUNTIME_DIR/current_player
+playerctl -l | rofi -dmenu -p "Select Media Player" > $XDG_RUNTIME_DIR/current_player

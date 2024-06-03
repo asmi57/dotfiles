@@ -6,4 +6,4 @@ bindsym XF86AudioMute        exec --no-startup-id mute
 bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 bindsym XF86AudioPlay exec --no-startup-id playpause
-bindsym XF86Tools     exec --no-startup-id playpause
+bindsym Shift+XF86AudioPlay exec --no-startup-id changeplayer
