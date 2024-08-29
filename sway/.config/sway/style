@@ -22,4 +22,8 @@ for_window [app_id="^org.kde.kcalc$"] {
 	resize set height 528 px
 }
 
+blur enable
+blur_passes 3
+blur_radius 2
+
 

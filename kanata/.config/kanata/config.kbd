@@ -1,0 +1,6 @@
+(defsrc caps)
+(deflayer base (tap-hold 500 500 esc caps))
+
+
+
+

@@ -1,0 +1,8 @@
+(defwindow dummy
+	:monitor 0
+	:stacking "bottom"
+	:geometry (geometry
+		:width "25%"
+		:height "25%"
+		:anchor "center")
+	(label :text "Hello, World!" :class "myclass"))

@@ -1,6 +1,6 @@
 #!/bin/env sh
 
-modules="betterdiscord fish kitty nvim picom rofi scripts starship tmux x11 sway"
+modules=$(fd --exact-depth 1 --type directory)
 
 for module in $modules; do
 	stow -t $HOME $module

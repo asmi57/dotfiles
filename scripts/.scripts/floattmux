@@ -1,0 +1,4 @@
+#!/bin/env sh
+
+kitty tmux new -A -s float &
+swaymsg for_window "[pid=$!]" floating enable

@@ -1,5 +1,6 @@
 
-# attach tmux session floating
+# window resolution picker
+bindsym $mod+y exec pickresolution
 
 # window controls
 

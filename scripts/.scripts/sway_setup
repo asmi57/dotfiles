@@ -1,7 +1,7 @@
 #!/bin/env sh
 
 killall swaybg
-swaybg --image $WALLPAPER_DIR/catppuccin.png &
+swaybg --mode fill --image $WALLPAPER_DIR/current &
 
 killall swaync
 swaync &

@@ -68,4 +68,9 @@ if oil_ok then
 end
 
 -- }}}
+-- Rust {{{
+
+bind('n', '<leader>rf', ':RustFmt<CR>')
+
+-- }}}
 -- }}}

@@ -1,0 +1,26 @@
+#!/bin/env python
+
+from os import popen
+from json import JSONDecoder
+
+json = popen("swaymsg -t get_outputs").read(-1)
+
+decoder = JSONDecoder()
+outputs = decoder.decode(json)
+
+d = { i['name']: i['modes'] for i in outputs}
+d = {disp: filter(lambda mode: mode['picture_aspect_ratio'] == "none", modes) for disp, modes in d.items()}
+
+disp = popen(f"printf \"{'\n'.join(d.keys())}\" | rofi -dmenu").read(-1).strip()
+
+def fmt(mode):
+    w = str(mode['width'])
+    h = str(mode['height'])
+    r = list(str(mode['refresh']))
+    r.insert(-3, '.')
+    r = ''.join(r)
+    return f'{w}x{h}@{r}Hz'
+
+mode = popen(f"printf \"{'\n'.join(map(fmt, d[disp]))}\" | rofi -dmenu").read(-1).strip()
+
+popen(f"swaymsg output {disp} mode {mode}")

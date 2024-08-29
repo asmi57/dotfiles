@@ -3,7 +3,7 @@ set -U fish_greeting ""
 
 if status is-interactive
 	source $FISH_DIRECTORY/abbreviations.fish
-	starship init fish | source
+	tty | grep tty || starship init fish | source
 	thefuck --alias    | source
 end
 
@@ -36,6 +36,7 @@ set -gx PATH $PATH /usr/local/sbin
 set -gx PATH $PATH /usr/lib/rustup/bin
 set -gx PATH $PATH $XDG_DATA_HOME/bin
 set -gx PATH $PATH $XDG_DATA_HOME/ghcup/bin
+set -gx PATH $PATH $HOME/.local/bin
 set -gx PATH $PATH $XDG_DATA_HOME/nvim/mason/bin
 set -gx PATH $PATH $HOME/.scripts
 set -gx PATH $PATH $HOME/.android/sdk/platform-tools
@@ -45,4 +46,9 @@ set -gx PATH $PATH $HOME/dev/suckless/bin
 
 set -gx XINITRC $XDG_CONFIG_HOME/X11/xinitrc
 set -gx XAUTHORITY $XDG_CONFIG_HOME/X11/Xauthority
+
+if test -e /tmp/startupflag
+	sudo rm /tmp/startupflag
+	test $DISPLAY || sway
+end
 

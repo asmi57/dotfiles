@@ -1,16 +1,16 @@
 
 output eDP-1 {
-	mode 1920x1200@165.000Hz
+	mode 2560x1600@165.000Hz
+	# mode 1920x1200@165.000Hz
+	# mode 1920x1080@165.000Hz
 }
-output HDMI-A-1 {
-	mode 1920x1080@60.000Hz
-}
-output HDMI-A-2 {
+output HDMI-* {
 	mode 1920x1080@60.000Hz
 }
 
 input * {
 	accel_profile "flat"
 	natural_scroll disabled
+	# dwt disabled
 }
 

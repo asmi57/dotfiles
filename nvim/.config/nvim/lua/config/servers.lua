@@ -2,10 +2,12 @@ return {
 	'rust_analyzer',
 	'lua_ls',
 	'jdtls',
-	-- 'tsserver',
+	'tsserver',
 	'clangd',
 	'hls',
 	'gopls',
 	'pyright',
-	'cssls'
+	'cssls',
+	'cmake',
+	-- 'zls'
 }
