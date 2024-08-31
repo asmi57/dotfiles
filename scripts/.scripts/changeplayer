@@ -1,2 +1,22 @@
-#!/bin/env sh
-playerctl -l | rofi -dmenu -p "Select Media Player" > $XDG_RUNTIME_DIR/current_player
+#!/bin/env python
+
+from os import popen
+import os
+
+p = popen("playerctl -l").read(-1).splitlines()  # playerctl -l | rofi -dmenu -p "Select Media Player" > $XDG_RUNTIME_DIR/current_player
+
+players = {}
+titles = []
+
+for player in p:
+    meta = popen(f"playerctl -p {player} metadata xesam:title").read(-1).strip()
+    players[meta] = player
+    titles.append(meta)
+
+choices = '\n'.join(titles) #.replace('(', '\\(').replace(')', '\\)')
+choice = popen(f"printf '{choices}' | rofi -dmenu").read(-1).strip()
+
+file = os.environ["XDG_RUNTIME_DIR"] + "/current_player"
+open(file, "w").write(players[choice])
+print(open(file, "r").read(-1))
+
