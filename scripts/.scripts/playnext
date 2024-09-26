@@ -1,3 +1,11 @@
 #!/bin/env sh
 
-playerctl -p $(cat $XDG_RUNTIME_DIR/current_player) next
+player=$(cat $XDG_RUNTIME_DIR/current_player)
+playerctl -p $player next
+
+playpause
+playpause
+
+
+
+

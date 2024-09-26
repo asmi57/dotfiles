@@ -6,6 +6,8 @@ abbr --add l  eza -l
 abbr --add la eza -la
 abbr --add ls eza
 
+abbr --add c   "z"
+abbr --add ci  "zi"
 abbr --add cl  "clear; eza -l"
 abbr --add cla "clear; eza -la"
 

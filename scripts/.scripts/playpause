@@ -24,5 +24,31 @@ if [[ ! $(playerctl -p $player status 2> /dev/null) ]]; then
 	echo "New player selected: \"$player\""
 fi
 
+status=$(playerctl -p $player status | tr -d '\n')
+
 playerctl -p $player play-pause
+
+
+icon=""
+if [[ $status == "Playing" ]]; then
+	status="Paused"
+	icon="media-playback-pause"
+elif [[ $status == "Paused"  ]]; then
+	status="Playing"
+	icon="media-playback-start"
+fi
+
+msg=\
+"Player $player status: $status
+$(playerctl -p $player metadata xesam:title) - $(playerctl -p $player metadata xesam:album)
+$(playerctl -p $player metadata xesam:artist)"
+
+if [[ -f $XDG_RUNTIME_DIR/media_notif_id ]]; then
+	notify-send "$msg" --icon=$icon -r $(cat $XDG_RUNTIME_DIR/media_notif_id)
+else
+	touch $XDG_RUNTIME_DIR/media_notif_id
+	notify-send "$msg" --icon=$icon -p | sudo tee $XDG_RUNTIME_DIR/media_notif_id
+fi
+
+
 

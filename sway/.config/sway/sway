@@ -11,6 +11,6 @@ output HDMI-* {
 input * {
 	accel_profile "flat"
 	natural_scroll disabled
-	# dwt disabled
+	dwt enabled
 }
 

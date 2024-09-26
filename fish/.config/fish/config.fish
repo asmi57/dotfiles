@@ -3,8 +3,8 @@ set -U fish_greeting ""
 
 if status is-interactive
 	source $FISH_DIRECTORY/abbreviations.fish
+	zoxide init fish | source
 	tty | grep tty || starship init fish | source
-	thefuck --alias    | source
 end
 
 set -gx XDG_CONFIG_HOME $HOME/.config
