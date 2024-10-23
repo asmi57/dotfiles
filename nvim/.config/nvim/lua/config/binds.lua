@@ -18,6 +18,8 @@ bind({ 'n', 'i', 'v' }, "<S-Right>", "<Right>")
 bind({ 'n', 'i', 'v' }, "<S-Up>",    "<Up>")
 bind({ 'n', 'i', 'v' }, "<S-Down>",  "<Down>")
 
+bind({ 'n', 'i', 'v' }, "", require("functions").comment)
+
 -- }}}
 -- Navigate buffers {{{
 
