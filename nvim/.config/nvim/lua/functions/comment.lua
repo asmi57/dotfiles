@@ -1,8 +1,8 @@
 
 local lookuptable = {
 	["lua"] = { "--", "%-%-" },
-	["c"] = { "//", "%-%-" },
-	["rust"] = { "//", "%-%-" },
+	["c"] = { "//" },
+	["rust"] = { "//" },
 }
 
 local sepwhitespace = function(text)
@@ -31,11 +31,12 @@ end
 
 local uncomment = function(text)
 	local _, cstr = commentstr()
-	local sub = string.gsub(text, cstr .. " ?", "", 1)
+	local sub, n = string.gsub(text, cstr .. " ?", "", 1)
+	print(cstr)
 	return sub
 end
 
-return function()
+F = function()
 	local startline = vim.fn.line('v')
 	local endline = vim.fn.line('.')
 
@@ -60,3 +61,7 @@ return function()
 		end
 	end
 end
+
+-- vim.keymap.set("n", "", F)
+
+return F
