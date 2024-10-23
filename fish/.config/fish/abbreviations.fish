@@ -15,15 +15,14 @@ abbr --add rd rmdir
 
 abbr --add fetch fastfetch
 
-abbr --add pmixer pulsemixer
-abbr --add pmx    pulsemixer
 
 abbr --add vim nvim
 abbr --add nv  nvim
 abbr --add v   nvim
 
-abbr --add blutui bluetuith
-abbr --add bt     bluetuith
+abbr --add bt   bluetuith
+abbr --add spot ncspot
+abbr --add pm   pulsemixer
 
 abbr --add g     git
 abbr --add gs    git status

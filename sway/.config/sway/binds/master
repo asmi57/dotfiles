@@ -15,8 +15,8 @@ bindsym $mod+Shift+r exec swaymsg reload
 bindsym $mod+q kill
 
 # rofi menus
-bindsym $mod+d exec --no-startup-id fish -c "rofi -show drun"
-bindsym $mod+w exec --no-startup-id fish -c "rofi -show window"
+bindsym $mod+d exec --no-startup-id fish -c "killall rofi || rofi -show drun"
+bindsym $mod+w exec --no-startup-id fish -c "killall rofi || rofi -show window"
 
 # kitty terminal
 bindsym $mod+Return       exec $terminal
