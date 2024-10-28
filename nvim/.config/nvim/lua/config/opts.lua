@@ -5,7 +5,9 @@ return {
 	termguicolors = true,
 	ignorecase = true,
 	smartcase = true,
+	swapfile = false,
 	shell = "/usr/bin/bash",
+
 	-- Screenspace {{{
 
 	wrap = false,

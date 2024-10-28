@@ -7,17 +7,7 @@ return {
 				enable = true,
 				additional_vim_regex_highlighting = false,
 			},
-			ensure_installed = {
-				'c',
-				'cpp',
-				'go',
-				'lua',
-				'python',
-				'rust',
-				'vim',
-				'vimdoc',
-				'make'
-			}
+			ensure_installed = { 'vim', 'vimdoc', }
 		})
 	end
 }
