@@ -18,11 +18,16 @@ for_window [class="^discord$"] {
 }
 for_window [app_id="^org.kde.kcalc$"] {
 	floating enable
-	resize set width 890 px
-	resize set height 528 px
+	resize set 890 px 528 px
 }
+
+for_window [class="desmos-offline-mode"] {
+	floating enable
+}
+
 for_window [class="screenkey"] {
 	floating enable
+	resize set 1200 px 800 px
 }
 
 blur enable

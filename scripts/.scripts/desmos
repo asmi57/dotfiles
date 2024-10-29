@@ -1,0 +1,4 @@
+#!/bin/env bash
+
+killall desmos-offline- || ~/software/desmos-offline-mode/desmos-offline-mode &
+
