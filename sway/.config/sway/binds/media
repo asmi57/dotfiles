@@ -9,3 +9,6 @@ bindsym XF86AudioPlay exec --no-startup-id playpause
 bindsym XF86AudioNext exec --no-startup-id playnext
 bindsym XF86AudioPrev exec --no-startup-id playprev
 bindsym Shift+XF86AudioPlay exec --no-startup-id changeplayer
+
+bindsym XF86MonBrightnessDown exec fish -c "bri (math (bri | cut -d '%' -f 1) - 5)"
+bindsym XF86MonBrightnessUp   exec fish -c "bri (math (bri | cut -d '%' -f 1) + 5)"
