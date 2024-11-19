@@ -15,3 +15,4 @@ local plugins = require('config.lazyplugins')
 require('lazy').setup(plugins)
 
 require("config.binds")
+require("config.auto")

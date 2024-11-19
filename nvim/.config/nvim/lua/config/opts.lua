@@ -14,7 +14,6 @@ return {
 	signcolumn = 'yes:2',
 	scrolloff = 10,
 	sidescrolloff = 10,
-	foldmethod = 'marker',
 
 	-- }}}
 	-- Tabs {{{
