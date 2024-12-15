@@ -1,0 +1,36 @@
+#!/bin/env sh
+
+artdir=/home/asmi/media/AlbumArt
+flag=$artdir/downloading
+player=$(cat $XDG_RUNTIME_DIR/current_player)
+
+if [ ! -d $artdir ]; then
+	mkdir $artdir
+fi
+
+arturl=$(playerctl -p $player metadata mpris:artUrl)
+if [ $? -ne 0 ]; then
+	echo failed to get art url
+	ln -sf $artdir/default $artdir/current
+	exit
+fi
+
+filename=$(echo $arturl | rev | cut -d'/' -f1 | rev)
+filepath=$artdir/$filename
+
+if [ -f $filepath ] && [ $(du $filepath | cut -f1) -gt 0 ]; then
+	echo file already exists at $filepath
+else
+
+	if [ -f $flag ]; then
+		echo download already in progress
+		exit
+	fi
+	touch $flag
+	curl $arturl > $filepath
+	rm $flag
+fi
+
+ln -sf $filepath $artdir/current
+
+

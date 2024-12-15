@@ -21,7 +21,6 @@ $mocha-overlay0: #6c7086;
 $mocha-surface2: #585b70;
 $mocha-surface1: #45475a;
 $mocha-surface0: #313244;
-$mocha-base: #1e1e2e;
 $mocha-mantle: #181825;
 $mocha-crust: #11111b;
 
@@ -32,23 +31,15 @@ $font: "JetBrainsMono NF";
 
 * {
 	all: unset;
-}
-
-.time-container {
-	background: rgba(#10101E, 0.4);
-	color: $mocha-mauve;
 	font-family: $font;
 	font-weight: Bold;
+}
 
-	font-size: 0.8pc;
-	margin-right: 1600px;
-	margin-bottom: 1100px;
-	border-radius: 60px;
-	padding: 30px;
-	padding-bottom: 60px;
-	$side-padding: 80px;
-	padding-left: $side-padding;
-	padding-right: $side-padding;
+$bg: rgba(#181828, 1);
+
+.clock {
+	background: $bg;
+	color: $mocha-mauve;
 
 	.time {
 		font-size: 9em;
@@ -58,5 +49,12 @@ $font: "JetBrainsMono NF";
 	}
 }
 
+.music {
+	// opacity: 0;
 
+	background: $bg;
+	.album-art {
+		border-radius: 60px;
+	}
+}
 

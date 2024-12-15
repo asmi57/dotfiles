@@ -2,6 +2,7 @@
 
 from os import popen
 from json import JSONDecoder
+from time import sleep
 
 json = popen("swaymsg -t get_outputs").read(-1)
 
@@ -24,3 +25,6 @@ def fmt(mode):
 mode = popen(f"printf \"{'\n'.join(map(fmt, d[disp]))}\" | rofi -dmenu").read(-1).strip()
 
 popen(f"swaymsg output {disp} mode {mode}")
+sleep(0.8)
+popen(f"eww reload").read(-1)
+

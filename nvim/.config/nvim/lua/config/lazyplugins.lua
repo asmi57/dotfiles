@@ -12,4 +12,5 @@ return {
 	require('plugins.treesitter'),
 	require('plugins.leap'),
 	require('plugins.rust'),
+	require('plugins.colorizer'),
 }

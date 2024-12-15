@@ -1,6 +1,6 @@
 #!/bin/env sh
 
-sh -c "eww close clock || eww open clock" &
+sh -c "eww close mainWindow; eww open mainWindow" &
 
 killall swaybg
 swaybg --mode fill --image $WALLPAPER_DIR/current &

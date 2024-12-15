@@ -2,9 +2,9 @@
 
 player=$(cat $XDG_RUNTIME_DIR/current_player)
 playerctl -p $player next
+playerctl -p $player play
 
-playpause
-playpause
+
 
 
 

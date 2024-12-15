@@ -1,6 +1,6 @@
 #!/bin/env sh
 
-playerctl -p $(cat $XDG_RUNTIME_DIR/current_player) previous
+player=$(cat $XDG_RUNTIME_DIR/current_player)
+playerctl -p $player previous
+playerctl -p $player play
 
-playpause
-playpause
