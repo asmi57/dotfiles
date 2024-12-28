@@ -30,9 +30,10 @@ local cmp_icons = {
 
 cmp.setup({
 	mapping = {
+		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-		["<CR>"] = cmp.mapping.confirm { select = false },
+		["<CR>"] = cmp.mapping.confirm({ select = false }),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()

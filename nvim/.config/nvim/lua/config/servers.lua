@@ -1,4 +1,5 @@
 return {
+	'ols',
 	'rust_analyzer',
 	'lua_ls',
 	'jdtls',

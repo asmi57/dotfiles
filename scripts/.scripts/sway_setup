@@ -8,4 +8,13 @@ swaybg --mode fill --image $WALLPAPER_DIR/current &
 killall swaync
 swaync &
 
+path="/home/asmi/media/AlbumArt/loop"
+if [ -f $path ]; then
+	pid=$(cat $path)
+	kill $pid
+fi
+fish -c "while true; getart; sleep 0.8; end" > /dev/null 2> /dev/null &
+echo $! > $path
+
+
 disown
