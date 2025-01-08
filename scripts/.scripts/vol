@@ -3,4 +3,17 @@
 if [[ $1 ]]; then
 	pactl set-sink-volume @DEFAULT_SINK@ $1%
 fi
-pamixer --get-volume
+
+id=$XDG_RUNTIME_DIR/volume_notif_id
+
+vol=$(pamixer --get-volume)
+t=1000
+
+icon="audio-speakers-symbolic"
+
+if [[ -f $id ]]; then
+	notify-send "$vol" -t $t --icon=$icon -p -r $(cat $id) | sudo tee $id
+else
+	touch $XDG_RUNTIME_DIR/media_notif_id
+	notify-send "$vol" -t $t --icon=$icon -p | sudo tee $id
+fi

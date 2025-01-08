@@ -47,6 +47,10 @@ set -gx PATH $PATH $HOME/dev/suckless/bin
 set -gx XINITRC $XDG_CONFIG_HOME/X11/xinitrc
 set -gx XAUTHORITY $XDG_CONFIG_HOME/X11/Xauthority
 
+set -gx QT_AUTO_SCREEN_SET_FACTOR 0
+set -gx QT_SCALE_FACTOR 2
+set -gx QT_FONT_DPI 96
+
 if test -e /tmp/startupflag
 	sudo rm /tmp/startupflag
 	test $DISPLAY || sway
