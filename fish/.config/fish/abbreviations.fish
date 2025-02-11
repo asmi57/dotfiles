@@ -14,6 +14,7 @@ abbr --add cla "clear; eza -la"
 abbr --add rd rmdir
 
 abbr --add fetch fastfetch
+abbr --add nmt 'bash -c "unset COLORTERM; TERM=xterm-old nmtui"'
 
 
 abbr --add vim nvim

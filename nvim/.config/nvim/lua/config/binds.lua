@@ -18,13 +18,16 @@ bind({ 'n', 'i', 'v' }, "<S-Right>", "<Right>")
 bind({ 'n', 'i', 'v' }, "<S-Up>",    "<Up>")
 bind({ 'n', 'i', 'v' }, "<S-Down>",  "<Down>")
 
+bind('n', "<leader>tn", vim.cmd.tabnext)
+bind('n', "<leader>tp", vim.cmd.tabprevious)
+
 bind({ 'n', 'i', 'v' }, "", require("functions").comment)
 
 -- }}}
 -- Navigate buffers {{{
 
+bind('n', '<leader>X',  function() vim.cmd.bdelete({ bang = true }) end,   { desc = "Close current buffer" })
 bind('n', '<leader>x',  vim.cmd.bdelete,   { desc = "Close current buffer" })
-bind('n', '<leader>bd', vim.cmd.bdelete,   { desc = "Close current buffer" })
 bind('n', '<leader>bn', vim.cmd.bnext,     { desc = "Switch to next buffer"})
 bind('n', '<leader>bp', vim.cmd.bprevious, { desc = "Switch to previous buffer"})
 

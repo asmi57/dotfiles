@@ -1,13 +1,6 @@
 
 font pango:DejaVu Sans Mono 12
 
-# class                   border    bground   text      indicator child_border
-client.focused            #F5C2E7   #1E1E2E   #BAC2DE   #C57BDB   #F5C2E7
-client.focused_inactive   #494D55   #494D55   #A6ADC8   #494D55   #494D55
-client.unfocused          #494D55   #494D55   #A6ADC8   #494D55   #494D55
-client.urgent             #494D55   #494D55   #A6ADC8   #494D55   #494D55
-client.placeholder        #494D55   #494D55   #A6ADC8   #494D55   #494D55
-
 for_window [all] border pixel 2
 smart_borders off
 

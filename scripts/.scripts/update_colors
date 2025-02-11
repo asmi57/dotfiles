@@ -1,0 +1,9 @@
+#!/bin/env sh
+
+theme=$(cat /tmp/theme || echo -n default)
+
+kitty_path="$HOME/.config/kitty"
+ln -sf $kitty_path/$(printf "$theme").conf $kitty_path/theme.conf
+
+sway_path="$HOME/.config/sway"
+cp $sway_path/themes/$theme $sway_path/theme

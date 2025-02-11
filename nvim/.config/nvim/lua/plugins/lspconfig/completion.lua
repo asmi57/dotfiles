@@ -29,6 +29,10 @@ local cmp_icons = {
 }
 
 cmp.setup({
+	window = {
+		completeion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
 	mapping = {
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),

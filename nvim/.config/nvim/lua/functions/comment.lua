@@ -3,6 +3,9 @@ local lookuptable = {
 	["lua"] = { "--", "%-%-" },
 	["c"] = { "//" },
 	["rust"] = { "//" },
+	["fish"] = { "#" },
+	["bash"] = { "#" },
+	["gdscript"] = { "#" },
 }
 
 local sepwhitespace = function(text)
@@ -32,7 +35,6 @@ end
 local uncomment = function(text)
 	local _, cstr = commentstr()
 	local sub, n = string.gsub(text, cstr .. " ?", "", 1)
-	print(cstr)
 	return sub
 end
 

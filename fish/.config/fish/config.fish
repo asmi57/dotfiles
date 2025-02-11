@@ -1,10 +1,27 @@
 set -gx FISH_DIRECTORY "$HOME/.config/fish"
 set -U fish_greeting ""
 
+if [ ! -e /tmp/theme ]
+	touch /tmp/theme
+end
+# echo -n mocha > /tmp/theme
+echo -n gruv > /tmp/theme
+
+
+
 if status is-interactive
 	source $FISH_DIRECTORY/abbreviations.fish
 	zoxide init fish | source
-	tty | grep tty || starship init fish | source
+	if tty | grep tty
+		set istty
+	end
+	if set -q istty
+	else
+		if set -q NO_STARSHIP
+		else
+			starship init fish | source
+		end
+	end
 end
 
 set -gx XDG_CONFIG_HOME $HOME/.config
@@ -47,12 +64,13 @@ set -gx PATH $PATH $HOME/dev/suckless/bin
 set -gx XINITRC $XDG_CONFIG_HOME/X11/xinitrc
 set -gx XAUTHORITY $XDG_CONFIG_HOME/X11/Xauthority
 
-set -gx QT_AUTO_SCREEN_SET_FACTOR 0
-set -gx QT_SCALE_FACTOR 2
-set -gx QT_FONT_DPI 96
+set -gx QT_AUTO_SCREEN_SET_FACTOR 1
+set -gx QT_SCALE_FACTOR 1
+# set -gx QT_FONT_DPI 96
 
 if test -e /tmp/startupflag
 	sudo rm /tmp/startupflag
 	test $DISPLAY || sway
 end
+
 

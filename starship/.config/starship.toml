@@ -12,7 +12,7 @@ format = """
 add_newline = false
 
 # Sets user-defined palette
-palette = "catppuccin_mocha"
+# palette = "catppuccin_mocha"
 
 [character]
 # Note the use of Catppuccin color 'maroon'

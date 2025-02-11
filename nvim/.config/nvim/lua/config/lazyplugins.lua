@@ -5,7 +5,7 @@ end
 
 return {
 	require('plugins.lspconfig'),
-	require('plugins.catppuccin'),
+	require('plugins.colorscheme'),
 	require('plugins.telescope'),
 	require('plugins.oil'),
 	require('plugins.indent-blankline'),
@@ -13,4 +13,5 @@ return {
 	require('plugins.leap'),
 	require('plugins.rust'),
 	require('plugins.colorizer'),
+	require('plugins.tinyglimmer'),
 }

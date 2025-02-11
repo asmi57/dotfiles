@@ -1,20 +1,30 @@
 #!/bin/env sh
 
-sh -c "eww close mainWindow; eww open mainWindow" &
+theme=$(cat /tmp/theme || echo -n default)
+
 
 killall swaybg
-swaybg --mode fill --image $WALLPAPER_DIR/current &
+if [ $theme == "mocha" ]; then  wall="mocha"
+elif [ $theme == "gruv" ]; then wall="gruv"
+else                            wall="mocha"
+fi
+swaybg --mode fill --image $WALLPAPER_DIR/$wall &
 
 killall swaync
 swaync &
 
+killall eww
 path="/home/asmi/media/AlbumArt/loop"
 if [ -f $path ]; then
 	pid=$(cat $path)
 	kill $pid
 fi
-fish -c "while true; getart; sleep 0.8; end" > /dev/null 2> /dev/null &
-echo $! > $path
+if [ $theme == "mocha" ]; then
+	eww open mainWindow &
+	fish -c "while true; getart; sleep 0.8; end" > /dev/null 2> /dev/null &
+	echo $! > $path
+fi
 
+update_colors &
 
 disown
