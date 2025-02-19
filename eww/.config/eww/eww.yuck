@@ -104,7 +104,6 @@
 			}"
 			:path album_art_path
 			:image-width 500
-			:tooltip "filepath: ${album_art_path}"
 		))
 		(scroll :hscroll true :vscroll false (label
 				:css "label {
@@ -122,9 +121,7 @@
 			:hexpand true
 			:spacing 20
 			:space-evenly false
-			:class "progressBar"
 			:css "box {
-				// background: #0000FF;
 				margin: 30px*(${screen_width}/2560) 20px;
 			}"
 			(label
@@ -136,21 +133,7 @@
 				:halign "fill"
 				:valign "center"
 				:hexpand true
-				:css "box {
-
-					progressbar trough {
-						background: #313244;
-						min-height: 16px;
-						border-radius: 10px;
-					}
-
-					progressbar trough progress {
-						background: #FFFFFF;
-						min-height: 16px;
-						border-radius: 10px;
-					}
-				}
-				"
+				:class "progressBar"
 				:value song_percent
 				:orientation "h"
 				:flipped false
@@ -218,7 +201,6 @@
 		:space-evenly false
 		:spacing 40
 		:css "box {
-			// background: #002200;
 			padding-left: 1600px*(${screen_width}/2560);
 			padding-top: 0*175px*(${screen_height}/1600);
 		}"

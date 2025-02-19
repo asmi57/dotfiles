@@ -11,4 +11,5 @@ return {
 	'pyright',
 	'rust_analyzer',
 	'zls',
+	'ts_ls'
 }

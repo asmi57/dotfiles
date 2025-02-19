@@ -19,11 +19,10 @@ if [ -f $path ]; then
 	pid=$(cat $path)
 	kill $pid
 fi
-if [ $theme == "mocha" ]; then
-	eww open mainWindow &
-	fish -c "while true; getart; sleep 0.8; end" > /dev/null 2> /dev/null &
-	echo $! > $path
-fi
+
+eww open mainWindow &
+fish -c "while true; getart; sleep 0.8; end" > /dev/null 2> /dev/null &
+echo $! > $path
 
 update_colors &
 
