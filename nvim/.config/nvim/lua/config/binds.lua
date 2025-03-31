@@ -78,4 +78,16 @@ end
 bind('n', '<leader>rf', ':RustFmt<CR>')
 
 -- }}}
+-- DAP {{{
+
+local dap_ok, dap = pcall(require, "dap")
+if dap_ok then
+	vim.keymap.set("n", '<leader>dx', dap.terminate)
+	vim.keymap.set("n", '<leader>bp', dap.toggle_breakpoint)
+	vim.keymap.set("n", '<leader>dso', dap.step_over)
+	vim.keymap.set("n", '<leader>dsO', dap.step_out)
+	vim.keymap.set("n", '<leader>dsi', dap.step_into)
+end
+
+-- }}}
 -- }}}

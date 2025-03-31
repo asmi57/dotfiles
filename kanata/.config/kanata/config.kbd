@@ -10,6 +10,6 @@
 )
 |#
 
-(defsrc     [ ] \)
-(deflayer _ \ \ \)
+(defsrc     a    s    )
+(deflayer _ mlft mrgt )
 

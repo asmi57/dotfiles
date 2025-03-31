@@ -7,13 +7,14 @@ return {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
-		"maan2003/lsp_lines.nvim"
+		"maan2003/lsp_lines.nvim",
+		"nvimdev/lspsaga.nvim",
 	},
 
 	config = function()
 		require("mason").setup({ ui = { border = "single" } })
 		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-			border = "single"
+			border = "rounded"
 		})
 
 		local lspconfig = require("lspconfig")
@@ -22,24 +23,8 @@ return {
 		local cmp_caps = require("cmp_nvim_lsp").default_capabilities()
 		local capabilities = vim.tbl_deep_extend("force", {}, caps, cmp_caps)
 
-		local on_attach = function(event)
-			local bind = require('functions').keybind({
-				noremap = true,
-				silent = true,
-				buffer = event.buf
-			})
-
-			bind('n', '<leader>k',  vim.lsp.buf.hover)
-			bind('n', '<leader>a',  vim.lsp.buf.code_action)
-			bind('n', '<leader>df', vim.diagnostic.open_float)
-			bind('n', '<leader>rn', vim.lsp.buf.rename)
-			bind('n', 'gd',         vim.lsp.buf.definition)
-			bind('n', 'gD',         vim.lsp.buf.declaration)
-			bind('n', 'gr',         vim.lsp.buf.references)
-		end
-
 		local default_opts = {
-			on_attach = on_attach,
+			on_attach = require('plugins.lspconfig.on_attach'),
 			capabilities = capabilities
 		}
 
@@ -54,6 +39,6 @@ return {
 
 		require('plugins.lspconfig.completion')
 		require('plugins.lspconfig.diagnostic')
-
+		require('plugins.lspconfig.lspsaga')
 	end
 }

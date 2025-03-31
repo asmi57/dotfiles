@@ -18,6 +18,10 @@ local updatetheme = function(theme)
 	elseif theme == "gruv" then
 		vim.cmd.colorscheme('gruvbox')
 		vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'none' })
+		vim.api.nvim_set_hl(0, 'StatusLine', {
+			fg = '#d5c4a1',
+			bg = '#3c3836'
+		})
 	else
 		print("theme " .. theme .. " not recognized")
 	end
@@ -27,17 +31,21 @@ local autotheme = function()
 	updatetheme(gettheme())
 end
 
+vim.api.nvim_create_user_command("Theme", autotheme, {})
+
 -- vim.api.nvim_create_autocmd({ "CursorHold" }, {
 	-- callback = autotheme
--- })
+	-- })
 
-return {
-	{
-		'catppuccin/nvim',
-		config = autotheme,
-	},
-	{
-		'ellisonleao/gruvbox.nvim',
-		config = autotheme,
+	return {
+		{
+			'catppuccin/nvim',
+			config = autotheme,
+			priority = 1000,
+		},
+		{
+			'ellisonleao/gruvbox.nvim',
+			config = autotheme,
+			priority = 1000,
+		}
 	}
-}

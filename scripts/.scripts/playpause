@@ -43,11 +43,15 @@ msg=\
 $(playerctl -p $player metadata xesam:title) - $(playerctl -p $player metadata xesam:album)
 $(playerctl -p $player metadata xesam:artist)"
 
-if [[ -f $XDG_RUNTIME_DIR/media_notif_id ]]; then
-	notify-send "$msg" --icon=$icon -r $(cat $XDG_RUNTIME_DIR/media_notif_id)
+id_file=$XDG_RUNTIME_DIR/media_notif_id
+
+if [[ -z $(cat $id_file) ]]; then rm $id_file; fi
+
+if [[ -f $id_file ]]; then
+	notify-send "$msg" --icon=$icon -r $(cat $id_file)
 else
-	touch $XDG_RUNTIME_DIR/media_notif_id
-	notify-send "$msg" --icon=$icon -p | sudo tee $XDG_RUNTIME_DIR/media_notif_id
+	touch $id_file
+	notify-send "$msg" --icon=$icon -p | sudo tee $id_file
 fi
 
 

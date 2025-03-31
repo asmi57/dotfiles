@@ -30,7 +30,7 @@ local cmp_icons = {
 
 cmp.setup({
 	window = {
-		completeion = cmp.config.window.bordered(),
+		_completion = cmp.config.window.bordered(),
 		documentation = cmp.config.window.bordered(),
 	},
 	mapping = {

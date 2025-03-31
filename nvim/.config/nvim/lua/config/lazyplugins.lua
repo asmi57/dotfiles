@@ -14,4 +14,5 @@ return {
 	require('plugins.rust'),
 	require('plugins.colorizer'),
 	require('plugins.tinyglimmer'),
+	require('plugins.dap'),
 }

@@ -8,6 +8,7 @@ if [ $theme == "mocha" ]; then  wall="mocha"
 elif [ $theme == "gruv" ]; then wall="gruv"
 else                            wall="mocha"
 fi
+
 swaybg --mode fill --image $WALLPAPER_DIR/$wall &
 
 killall swaync

@@ -8,8 +8,8 @@ return {
 	'jdtls',
 	'lua_ls',
 	'ols',
-	'pyright',
+	'pylsp',
 	'rust_analyzer',
 	'zls',
-	'ts_ls'
+	'ts_ls',
 }

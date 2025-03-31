@@ -1,7 +1,6 @@
-print("markviewer required")
 return {
 	'OXY2DEV/markview.nvim',
-	setup = function()
+	config = function()
 		require('markviewer').setup({
 			--- When true, markdown, html, latex aren't rendered inside
 			--- of code blocks
