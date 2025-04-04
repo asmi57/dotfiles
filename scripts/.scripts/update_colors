@@ -10,3 +10,6 @@ ln -sf $rofi_path/$(printf "$theme").rasi $rofi_path/theme.rasi
 
 sway_path="$HOME/.config/sway"
 cp $sway_path/themes/$theme $sway_path/theme
+
+eww_path="$HOME/.config/eww"
+cp $eww_path/$theme.scss $eww_path/theme.scss
