@@ -5,5 +5,8 @@ theme=$(cat /tmp/theme || echo -n default)
 kitty_path="$HOME/.config/kitty"
 ln -sf $kitty_path/$(printf "$theme").conf $kitty_path/theme.conf
 
+rofi_path="$HOME/.config/rofi"
+ln -sf $rofi_path/$(printf "$theme").rasi $rofi_path/theme.rasi
+
 sway_path="$HOME/.config/sway"
 cp $sway_path/themes/$theme $sway_path/theme

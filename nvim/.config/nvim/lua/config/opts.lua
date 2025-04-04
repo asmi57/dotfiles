@@ -7,6 +7,7 @@ return {
 	smartcase = true,
 	swapfile = false,
 	shell = "/usr/bin/bash",
+	foldmethod = "manual",
 
 	-- Screenspace {{{
 
