@@ -3,9 +3,7 @@
 set -x
 
 grim -g "$(slurp)" - > $XDG_RUNTIME_DIR/snip.png
-
-if test 0 -ne $?; then exit; fi
-
+if [[  0 -ne $? ]]; then exit; fi
 
 name=$(rofi -dmenu -p "{}.png") \
 	&& cp $XDG_RUNTIME_DIR/snip.png $HOME/$name.png \

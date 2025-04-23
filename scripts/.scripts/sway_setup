@@ -27,4 +27,6 @@ echo $! > $path
 
 update_colors &
 
+tmux source ~/.config/tmux/tmux.conf &
+
 disown

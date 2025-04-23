@@ -24,6 +24,7 @@ bindsym $mod+Shift+Return exec $terminal_tmux
 
 # clip screen
 bindsym Print exec screenclip_sway
+bindsym Ctrl+Print exec sh -c "grim - | wl-copy"
 
 bindsym $mod+b exec firefox
 bindsym $mod+Shift+b exec firefox --profile /home/asmi/.mozilla/firefox/wxb22lns.school
