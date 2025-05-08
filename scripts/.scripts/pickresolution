@@ -9,10 +9,18 @@ json = popen("swaymsg -t get_outputs").read(-1)
 decoder = JSONDecoder()
 outputs = decoder.decode(json)
 
-d = { i['name']: i['modes'] for i in outputs}
-d = {disp: filter(lambda mode: mode['picture_aspect_ratio'] == "none", modes) for disp, modes in d.items()}
+d = {
+    i['name']: i['modes'] for i in outputs
+}
+d = {
+    disp: filter(lambda mode: mode['picture_aspect_ratio'] == "none", modes)
+    for disp, modes in d.items()
+}
 
-disp = popen(f"printf \"{'\n'.join(d.keys())}\" | rofi -dmenu").read(-1).strip()
+disp = popen(f"printf \"{'\n'.join(d.keys())}\" | rofi -dmenu -p display") \
+    .read(-1) \
+    .strip()
+
 
 def fmt(mode):
     w = str(mode['width'])
@@ -22,9 +30,11 @@ def fmt(mode):
     r = ''.join(r)
     return f'{w}x{h}@{r}Hz'
 
-mode = popen(f"printf \"{'\n'.join(map(fmt, d[disp]))}\" | rofi -dmenu").read(-1).strip()
+
+mode = popen(f"printf \"{'\n'.join(map(fmt, d[disp]))}\" | rofi -dmenu -p mode") \
+    .read(-1) \
+    .strip()
 
 popen(f"swaymsg output {disp} mode {mode}")
 sleep(0.8)
-popen(f"eww reload").read(-1)
-
+popen("eww reload").read(-1)

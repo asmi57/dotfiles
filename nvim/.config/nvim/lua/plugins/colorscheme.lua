@@ -9,7 +9,6 @@ local gettheme = function ()
 	end
 end
 
-local theme = gettheme()
 local updatetheme = function(theme)
 	if theme == "mocha" then
 		vim.cmd.colorscheme('catppuccin-mocha')
