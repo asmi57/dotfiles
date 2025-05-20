@@ -6,6 +6,7 @@ local lookuptable = {
 	["fish"] = { "#" },
 	["bash"] = { "#" },
 	["gdscript"] = { "#" },
+	["python"] = { "#" },
 }
 
 local sepwhitespace = function(text)
