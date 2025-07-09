@@ -1,0 +1,71 @@
+#!/bin/env python
+
+from os import path, environ, listdir
+from sys import argv
+import re
+
+todo_dir = path.abspath(f"{environ["HOME"]}/notes/100 Todo")
+
+if len(argv) == 1:
+    sep = '    '
+elif len(argv) == 2 and argv[1] == '-t':
+    sep = '\t'
+else:
+    print(f"usage: {argv[0]} [-t]")
+    exit(-1)
+
+
+def entry(p):
+    match = re.match("^(.*)\\.md$", path.basename(p))
+    if match is None:
+        return None
+    name = match.group(1)
+    content = open(p, 'r').read(-1)
+    lines = content.splitlines()
+
+    due = None
+    for line in lines:
+        match = re.match("^due: (\\d\\d\\d\\d-\\d\\d-\\d\\d)$", line)
+        if match is not None:
+            due = match.group(1)
+
+    location = None
+    for line in lines:
+        match = re.match("^location: (.*)$", line)
+        if match is not None:
+            location = match.group(1)
+
+    return {"name": name, "due": due, "location": location}
+
+
+todos = [entry(f"{todo_dir}/{p}") for p in listdir(todo_dir)]
+todos = filter(lambda o: o is not None, todos)
+todos = list(todos)
+
+spec = ["due",       "name", "location"]
+defs = ["----------", None,  ""]
+table = [[o[s] for s in spec] for o in todos]
+
+for y in range(len(table)):
+    for x in range(len(spec)):
+        if table[y][x] is None:
+            table[y][x] = defs[x]
+
+longests = [max(map(len, [row[x] for row in table])) for x in range(len(spec))]
+
+
+def pad(string, desired_length):
+    if sep == '\t':
+        return string
+    pads = desired_length - len(string)
+    return string + (' ' * pads)
+
+
+for y in range(len(table)):
+    for x in range(len(spec)):
+        table[y][x] = pad(table[y][x], longests[x])
+
+table.sort(key=lambda row: row[0])
+
+for row in table:
+    print(sep.join(row))

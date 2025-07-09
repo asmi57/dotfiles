@@ -10,6 +10,6 @@
 )
 |#
 
-(defsrc     a    s    )
-(deflayer _ mlft mrgt )
+(defsrc     caps)
+(deflayer _ lctl)
 

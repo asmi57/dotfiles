@@ -1,0 +1,13 @@
+
+(defpoll datetime
+	:initial "??:??"
+	:interval "0.1s"
+	"date +'%m/%d - %H:%M:%S'"
+)
+(defwidget time []
+	(box
+		(label
+			:text datetime
+		)
+	)
+)

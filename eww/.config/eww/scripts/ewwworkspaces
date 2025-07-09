@@ -1,0 +1,12 @@
+#!/bin/env bash
+
+getinfo() {
+	swaymsg -t get_workspaces | jq '.' --compact-output
+}
+
+getinfo
+swaymsg -t subscribe '["workspace"]' --monitor | {
+    while read -r event; do
+		getinfo
+    done
+}

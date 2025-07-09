@@ -1,0 +1,12 @@
+(defpoll ewwbattery
+	:interval "5s"
+	:initial "?"
+	"ewwbattery"
+)
+(defwidget battery []
+	(label
+		:halign "center"
+		:class "battery"
+		:text "${ewwbattery}"
+	)
+)

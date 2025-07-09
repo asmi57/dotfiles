@@ -60,6 +60,7 @@ set -gx PATH $PATH $HOME/.android/sdk/platform-tools
 set -gx PATH $PATH $CEDEV/bin
 set -gx PATH $PATH $CARGO_HOME/bin
 set -gx PATH $PATH $HOME/dev/suckless/bin
+set -gx PATH $PATH $XDG_CONFIG_HOME/eww/scripts
 
 set -gx XINITRC $XDG_CONFIG_HOME/X11/xinitrc
 set -gx XAUTHORITY $XDG_CONFIG_HOME/X11/Xauthority

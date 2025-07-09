@@ -1,47 +1,36 @@
-// @import "mocha.scss";
-// @import "gruv.scss";
-@import "theme.scss";
+@import "gruv.scss";
 
-
-$font: "JetBrainsMono NF";
 * {
-	all: unset;
-	font-family: $font;
-	font-weight: Bold;
+  background-color: $bg0;
+  color: $fg0;
+  font-size: 24px;
+  font-family: "jetbrainsmono";
 }
 
-
-.clock {
-	background: $bg;
-	color: $hlfg;
-
-	.time {
-		font-size: 9em;
-	}
-	.date {
-		font-size: 4em;
-	}
+.battery {
+  color: $green;
+  background: $bg2;
+  padding: 0px 5px;
+  margin: 0px 5px;
+}
+.memory {
+  color: $fg1;
+  background: $bg2;
+  padding: 0px 5px;
+  margin: 0px 5px;
+}
+.workspaces {
+  padding: 0px 10px;
+  .workspace {
+    padding: 0px 5px;
+    margin: 0px 0px;
+  }
+  .focused {
+    color: $blue;
+    background: $bg2
+  }
 }
 
-.music {
-	background: $bg;
-    color: $fg;
-	.album-art {
-		border-radius: 60px;
-	}
-}
-
-
-
-.progressBar {
-    trough {
-        background: $bg0;
-        min-height: 16px;
-        border-radius: 10px;
-    }
-    trough progress {
-        background: $fg;
-        min-height: 16px;
-        border-radius: 10px;
-    }
+.mode {
+  background: $red-dim;
 }

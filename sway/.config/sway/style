@@ -1,8 +1,8 @@
 
 font pango:DejaVu Sans Mono 12
 
-for_window [all] border pixel 2
-smart_borders off
+for_window [all] border pixel 1
+smart_borders on
 
 for_window [class="^discord$"] {
 	floating enable

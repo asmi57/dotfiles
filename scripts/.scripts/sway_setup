@@ -4,28 +4,15 @@ theme=$(cat /tmp/theme || echo -n default)
 
 
 killall swaybg
-if [ $theme == "mocha" ]; then  wall="mocha"
-elif [ $theme == "gruv" ]; then wall="gruv"
-else                            wall="mocha"
-fi
-
-swaybg --mode fill --image $WALLPAPER_DIR/$wall &
+# wall="gruv"
+# swaybg --mode fill --image $WALLPAPER_DIR/$wall &
+swaybg --color 1b1b1b &
 
 killall swaync
 swaync &
 
-if false; then
-	killall eww
-	path="/home/asmi/media/AlbumArt/loop"
-	if [ -f $path ]; then
-		pid=$(cat $path)
-		kill $pid
-	fi
-
-	eww open mainWindow &
-	fish -c "while true; getart; sleep 0.8; end" > /dev/null 2> /dev/null &
-	echo $! > $path
-fi
+killall eww
+eww open bar
 
 update_colors &
 

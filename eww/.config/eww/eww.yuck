@@ -1,211 +1,48 @@
-(defpoll current_time
-	:interval "0.5s"
-	"date '+%T'"
-)
-(defpoll current_date
-	:interval "30s"
-	"date +'%A, %B %-d'"
-)
-
-(defpoll album_art_path
-	:interval "1.5s"
-	:initial "/home/asmi/media/AlbumArt/default"
-	"realpath /home/asmi/media/AlbumArt/current"
-)
-
-(defpoll screen_height
-	:interval "3.3s"
-	:initial 1600
-	"swaymsg -t get_outputs | jq .[0].rect.height"
-)
-(defpoll screen_width
-	:interval "3.3s"
-	:initial 2560
-	"swaymsg -t get_outputs | jq .[0].rect.width"
-)
-(defpoll song_title
-	:interval "1.5s"
-	:initial "Not Playing"
-	"playerctl -p $(cat $XDG_RUNTIME_DIR/current_player) metadata xesam:title || echo Not Playing"
-)
-(defpoll song_artist
-	:interval "1.5s"
-	:initial ""
-	"playerctl -p $(cat $XDG_RUNTIME_DIR/current_player) metadata xesam:artist || echo"
-)
-(defpoll song_percent
-	:interval "0.8s"
-	:initial 0.0
-	"fish -c 'math (playerctl -p $(cat $XDG_RUNTIME_DIR/current_player) position)\\*100000000/(playerctl -p $(cat $XDG_RUNTIME_DIR/current_player) metadata mpris:length) || echo 0.0'"
-)
-(defpoll song_progress
-	:interval "0.8s"
-	:initial 0
-	"playerctl -p $(cat $XDG_RUNTIME_DIR/current_player) position | cut -f1 -d'.' || echo 0"
-)
-(defpoll song_length
-	:interval "1.5s"
-	:initial 0
-	"expr $(playerctl -p $(cat $XDG_RUNTIME_DIR/current_player) metadata mpris:length) / 1000000 || echo 0"
-)
-(defpoll song_status
-	:interval "0.5s"
-	:initial "Paused"
-	"playerctl -p $(cat $XDG_RUNTIME_DIR/current_player) status"
-)
-
-(defwidget clock []
-	(box
-		:css "box {
-			border-radius: 60px*(${screen_height}/1600);
-			padding: 30px*(${screen_height}/1600);
-			padding-bottom: 60px*(${screen_height}/1600);
-			font-size: 9.6px*(4/3)*(${screen_width}/2560);
-			min-width: 700px*(${screen_width}/2560);
-		}"
-		:class "clock"
-		:orientation "v"
-		:space-evenly false
-		:halign "center"
-		:valign "center"
-		(label
-			:class "time"
-			:text current_time
-		)
-		(label
-			:class "date"
-			:text current_date
-		)
-	)
-)
 
 
-(defwidget music []
-	(box
-		:class "music"
-		:halign "center"
-		:valign "center"
-		:orientation "v"
-		:space-evenly false
-		:hexpand false
-		:spacing 10
-		:css "box {
-			padding: 30px*(${screen_width}/2560);
-			font-size: 9.6px*(4/3)*(${screen_width}/2560);
-			min-width: 700px*(${screen_width}/2560);
-			min-height: 800px*(${screen_width}/2560);
-			border-radius: 60px*(${screen_height}/1600);
-		}"
-		(scroll :hscroll true :vscroll false (image
-			:class "album-art"
-			:css "image {
-				padding-top: 40px;
-				min-height: 500px;
-			}"
-			:path album_art_path
-			:image-width 500
-		))
-		(scroll :hscroll true :vscroll false (label
-				:css "label {
-					padding-top: 30px; font-size: 3em*(${screen_width}/2560);
-				}"
-				:text song_title
-		))
-		(scroll :hscroll true :vscroll false (label
-			:css "label { margin: 5px; font-size: 2em*(${screen_width}/2560); }"
-			:text song_artist
-		))
-		(box
-			:halign "fill"
-			:valign "center"
-			:hexpand true
-			:spacing 20
-			:space-evenly false
-			:css "box {
-				margin: 30px*(${screen_width}/2560) 20px;
-			}"
-			(label
-				:valign "center"
-				:css "label { font-size: 2em*(${screen_width}/2560); }"
-				:text "${replace(round((song_progress / 60) - 0.5, 0), '-', '')}:${song_progress % 60 < 10 ? "0" : ""}${song_progress % 60}"
-			)
-			(progress
-				:halign "fill"
-				:valign "center"
-				:hexpand true
-				:class "progressBar"
-				:value song_percent
-				:orientation "h"
-				:flipped false
-			)
-			(label
-				:valign "center"
-				:css "label { font-size: 2em*(${screen_width}/2560); }"
-				:text "${replace(round(song_length / 60 - 0.5, 0), '-', '')}:${song_length % 60 < 10 ? "0" : ""}${song_length % 60}"
-			)
-		)
-		(box
-			:vexpand false
-			:class "music-controls"
-			(button
-				:onclick "playprev"
-				(label
-					:css "label {
-						font-size: 6em*(${screen_width}/2560);
-					}"
-					:text "󰒮"
-				)
-			)
-			(button
-				:onclick "playpause"
-				(label
-					:css "label {
-						font-size: 6em*(${screen_width}/2560);
-					}"
-					:text "${ ((song_status == "Playing") ? "󰏤"
-							 :((song_status == "Paused" ) ? "󰐊" 
-							 :((song_status == "Stopped") ? "󰓛" : "")))
-					}"
-				)
-			)
-			(button
-				:onclick "playnext"
-				(label
-					:css "label {
-						font-size: 6em*(${screen_width}/2560);
-					}"
-					:text "󰒭"
-				)
-			)
-		)
-	)
-)
+(include "widgets/workspaces.yuck")
+(include "widgets/time.yuck")
+(include "widgets/memory.yuck")
+(include "widgets/battery.yuck")
+(include "widgets/mode.yuck")
 
-(defwindow mainWindow
+
+
+(defwindow bar
 	:monitor 0
-	:stacking "bottom"
+	:exclusive true
+	:stacking "fg"
+	:focusable false
 	:geometry (geometry
+		:x "0%"
+		:y "0%"
 		:width "100%"
-		:height "100%"
-		:focusable false
+		:height "1%"
+		:anchor "bottom center"
 	)
-	:wm-ignore true
-
 	(box
-		:class "main"
-		:halign "center"
-		:valign "center"
-		:hexpand false
-		:vexpand false
-		:orientation "v"
-		:space-evenly false
-		:spacing 40
-		:css "box {
-			padding-left: 1600px*(${screen_width}/2560);
-			padding-top: 0*175px*(${screen_height}/1600);
-		}"
-		(music)
-		(clock)
+		:class "bar"
+		:orientation "horizontal"
+		(box
+			:orientation "h"
+			:halign "start"
+			:space-evenly false
+			(workspaces)
+			(mode)
+		)
+		(box
+			:orientation "h"
+			:halign "center"
+			:space-evenly false
+			(time)
+		)
+		(box
+			:orientation "h"
+			:halign "end"
+			:space-evenly false
+			(memory)
+			(battery)
+		)
 	)
-
 )
+

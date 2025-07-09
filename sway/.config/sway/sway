@@ -14,14 +14,15 @@ input * {
 	dwt enabled
 }
 
-# swaync config
-exec_always rm ~/.config/swaync/style.css
-
-# catppuccin
-# set $flavor mocha
-# set $version v0.2.0
-# exec_always if [ ! -f ~/.config/swaync/style.css ]; then $(mkdir -p ~/.config/swaync && curl -L https://github.com/catppuccin/swaync/releases/download/$version/$flavor.css -o ~/.config/swaync/style.css); fi
-
 # gruvbox
 exec_always if [ ! -f ~/.config/swaync/style.css ]; then $(mkdir -p ~/.config/swaync && curl -L https://raw.githubusercontent.com/iruzo/gruvbox-swaync/main/gruvbox-dark.css -o ~/.config/swaync/style.css); fi
+
+blur disable
+blur_passes 3
+blur_radius 10
+
+shadows enable
+shadow_offset 0 0
+shadows_on_csd disable
+shadow_blur_radius 50
 

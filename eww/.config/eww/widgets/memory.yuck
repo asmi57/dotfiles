@@ -1,0 +1,9 @@
+
+(defwidget memory []
+	(label
+		:halign "center"
+		:class "memory"
+		:text "${round((EWW_RAM.used_mem) / 1073741824, 1)} GB / ${round((EWW_RAM.total_mem) / 1073741824, 1)} GB"
+	)
+)
+

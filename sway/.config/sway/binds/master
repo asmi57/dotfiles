@@ -31,3 +31,5 @@ bindsym $mod+Shift+b exec gtk-launch school
 
 bindsym $mod+m exec calculator
 bindsym $mod+Shift+m exec desmos
+bindsym $mod+n exec obsidian
+bindsym $mod+Shift+f exec fanprofile

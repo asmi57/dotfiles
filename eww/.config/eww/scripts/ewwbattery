@@ -1,0 +1,17 @@
+#!/bin/env python
+
+import math
+from sys import argv
+
+charge_now = int(open('/sys/class/power_supply/BAT1/charge_now').read(-1))
+charge_full = int(open('/sys/class/power_supply/BAT1/charge_full').read(-1))
+status = open('/sys/class/power_supply/BAT1/charge_full').read(-1)
+
+percent_charge = math.floor(100 * charge_now / charge_full)
+symbols = "󰂎󰁺󰁻󰁼󰁽󰁾󰁿󰂀󰂁󰂂󰁹󰂃󰂄󰂌󰂏󰂑"
+symbol = symbols[math.floor(percent_charge / 10)]
+
+if len(argv) > 1 and argv[1] == "-r":
+    print(f"{percent_charge}")
+else:
+    print(f"{symbol}{percent_charge}%")

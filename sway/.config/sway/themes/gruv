@@ -1,8 +1,0 @@
-# class                   border    bground   text      indicator child_border
-client.focused            #B8BB26   #282828   #EBDBB2   #98971A   #B8BB26
-client.focused_inactive   #928374   #928374   #EBDBB2   #928374   #928374
-client.unfocused          #928374   #928374   #EBDBB2   #928374   #928374
-client.urgent             #928374   #928374   #EBDBB2   #928374   #928374
-client.placeholder        #928374   #928374   #EBDBB2   #928374   #928374
-
-

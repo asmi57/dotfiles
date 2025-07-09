@@ -1,0 +1,12 @@
+#!/bin/env bash
+
+getinfo() {
+	swaymsg -t get_binding_state | jq '.name' --compact-output -r
+}
+
+getinfo
+swaymsg -t subscribe '["mode"]' --monitor | {
+    while read -r event; do
+		getinfo
+    done
+}

@@ -1,0 +1,15 @@
+(deflisten workspacesArray
+	:initial "${[]}"
+	"ewwworkspaces"
+)
+(defwidget workspaces []
+	(box
+		:class "workspaces"
+		(for entry in workspacesArray
+			(label
+				:text "${entry.name}"
+				:class "workspace ${entry.focused ? "focused" : ""}"
+			)
+		)
+	)
+)

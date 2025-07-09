@@ -15,4 +15,5 @@ return {
 	require('plugins.colorizer'),
 	require('plugins.tinyglimmer'),
 	require('plugins.dap'),
+	require('plugins.pico8'),
 }
