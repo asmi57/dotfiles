@@ -2,3 +2,4 @@
 
 modes=$(fw-fanctrl print list | tail -n +2 | cut -c 3-)
 fw-fanctrl use $(printf "$modes" | rofi -dmenu -p 'Fan Profile')
+

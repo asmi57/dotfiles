@@ -43,5 +43,5 @@ abbr --add glo   git log
 abbr --add glog  git log --graph --oneline --decorate
 abbr --add gloga git log --graph --oneline --decorate --all
 
-alias swaynodes="swaymsg -t get_tree | jq 'def ret(node): [node, (node.nodes[] | ret(.))[]]; ret(.)'"
+alias swaynodes="swaymsg -t get_tree | jq 'def ret(node): [node, ((node.floating_nodes + node.nodes)[] | ret(.))[]]; ret(.)'"
 

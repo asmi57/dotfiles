@@ -1,0 +1,3 @@
+#!/bin/env bash
+
+swaymsg [pid=$(swaymsg -t get_tree | jq 'def ret(node): [node, ((node.nodes + node.floating_nodes)[] | ret(.))[]]; ret(.) | map(select(.window_properties.class == "obsidian")) | .[].pid')] focus || obsidian & disown

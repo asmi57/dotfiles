@@ -23,6 +23,6 @@ blur_radius 10
 
 shadows enable
 shadow_offset 0 0
-shadows_on_csd disable
+shadows_on_csd enable
 shadow_blur_radius 50
 
