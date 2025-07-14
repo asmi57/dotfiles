@@ -1,14 +1,20 @@
-(deflisten workspacesArray
+(deflisten swayworkspaces
 	:initial "${[]}"
-	"ewwworkspaces"
+	"ewwswayworkspaces"
 )
 (defwidget workspaces []
 	(box
-		:class "workspaces"
-		(for entry in workspacesArray
-			(label
-				:text "${entry.name}"
-				:class "workspace ${entry.focused ? "focused" : ""}"
+		:space-evenly false
+		:class "outputs"
+		(for output in "${jq(swayworkspaces, "keys | reverse")}"
+			(box
+				:class "workspaces"
+				(for workspace in { swayworkspaces[output] }
+					(label
+						:class "workspace ${workspace.focused ? "focused" : ""}"
+						:text "${workspace.name}"
+					)
+				)
 			)
 		)
 	)

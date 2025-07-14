@@ -1,12 +1,21 @@
-(defpoll ewwbattery
-	:interval "5s"
-	:initial "?"
-	"ewwbattery"
+(deflisten batteryjson
+	:initial "{}"
+	"ewwbattery -j"
 )
 (defwidget battery []
-	(label
+	(box
 		:halign "center"
+		:space-evenly false
 		:class "battery"
-		:text "${ewwbattery}"
+		(label
+			:class "symbol"
+			:halign "center"
+			:text "${batteryjson.symbol ?: "B"}"
+		)
+		(label
+			:class "value"
+			:halign "center"
+			:text "${batteryjson.percentage ?: "?"}%"
+		)
 	)
 )

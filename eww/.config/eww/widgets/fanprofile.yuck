@@ -1,0 +1,21 @@
+
+(defpoll fanprofileVar
+	:initial "lazy"
+	:interval "3s"
+	"ewwfanprofile"
+)
+(defwidget fanprofile []
+	(box
+		:halign "center"
+		:space-evenly false
+		:class "fanprofile"
+		(label
+			:class "symbol"
+			:text "F"
+		)
+		(label
+			:class "value"
+			:text "${fanprofileVar}"
+		)
+	)
+)

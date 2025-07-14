@@ -1,0 +1,3 @@
+#!/bin/env bash
+
+fw-fanctrl print current | grep -o "'[^']*'" | grep -o "[^']\+" | head -n 1

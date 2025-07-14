@@ -1,11 +1,11 @@
-(deflisten currentmode
+(deflisten swaybindingmode
 	:initial "${[]}"
-	"ewwmode"
+	"ewwswaybindingmode"
 )
 (defwidget mode []
 	(label
 		:class "mode"
-		:visible { currentmode != "default" }
-		:text "${currentmode}"
+		:visible { swaybindingmode != "default" }
+		:text "${swaybindingmode}"
 	)
 )

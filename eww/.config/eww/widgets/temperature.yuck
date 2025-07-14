@@ -1,0 +1,22 @@
+
+(defpoll cputemp
+	:initial "0"
+	:interval "1s"
+	"ewwtemp"
+)
+(defwidget temperature []
+	(box
+		:halign "center"
+		:space-evenly false
+		:class "temperature"
+		(label
+			:class "symbol"
+			:text "T"
+		)
+		(label
+			:class "value"
+			:text "${round(cputemp, 1)}°C"
+		)
+	)
+)
+

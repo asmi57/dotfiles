@@ -1,17 +1,37 @@
 #!/bin/env python
 
 import math
-from sys import argv
+from time import sleep
 
-charge_now = int(open('/sys/class/power_supply/BAT1/charge_now').read(-1))
-charge_full = int(open('/sys/class/power_supply/BAT1/charge_full').read(-1))
-status = open('/sys/class/power_supply/BAT1/charge_full').read(-1)
+capacity_file = open('/sys/class/power_supply/BAT1/charge_full')
+charge_file = open('/sys/class/power_supply/BAT1/charge_now')
+status_file = open('/sys/class/power_supply/BAT1/status')
 
-percent_charge = math.floor(100 * charge_now / charge_full)
-symbols = "󰂎󰁺󰁻󰁼󰁽󰁾󰁿󰂀󰂁󰂂󰁹󰂃󰂄󰂌󰂏󰂑"
-symbol = symbols[math.floor(percent_charge / 10)]
+stdout = open("/dev/stdout", "w")
 
-if len(argv) > 1 and argv[1] == "-r":
-    print(f"{percent_charge}")
-else:
-    print(f"{symbol}{percent_charge}%")
+while True:
+    status_file.seek(0)
+    status = status_file.read(-1).strip()
+
+    charge_file.seek(0)
+    charge = int(charge_file.read(-1))
+
+    capacity_file.seek(0)
+    capacity = int(capacity_file.read(-1))
+
+    percent_charge = math.floor(100 * charge / capacity)
+    symbols = "󰂎󰁺󰁻󰁼󰁽󰁾󰁿󰂀󰂁󰂂󰁹󰂃󰂄󰂌󰂏󰂑"
+
+    if status != "Discharging":
+        symbol = '󰂄'
+    else:
+        symbol = symbols[math.floor(percent_charge / 10)]
+
+    stdout.write("{")
+    stdout.write(f"\"status\":\"{status}\",")
+    stdout.write(f"\"percentage\":\"{percent_charge}\",")
+    stdout.write(f"\"symbol\":\"{symbol}\"")
+    stdout.write("}")
+    stdout.write("\n")
+    stdout.flush()
+    sleep(1)

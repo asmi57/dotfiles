@@ -29,7 +29,7 @@ bind({ 'n', 'i', 'v' }, "", require("functions").comment)
 bind('n', '<leader>X',  function() vim.cmd.bdelete({ bang = true }) end,   { desc = "Close current buffer" })
 bind('n', '<leader>x',  vim.cmd.bdelete,   { desc = "Close current buffer" })
 bind('n', '<leader>bn', vim.cmd.bnext,     { desc = "Switch to next buffer"})
-bind('n', '<leader>bp', vim.cmd.bprevious, { desc = "Switch to previous buffer"})
+bind('n', '<leader>bm', vim.cmd.bprevious, { desc = "Switch to previous buffer"})
 
 -- }}}
 -- Splits {{{

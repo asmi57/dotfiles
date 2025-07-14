@@ -1,0 +1,21 @@
+#!/bin/env bash
+
+getinfo() {
+	swaymsg -t get_tree | jq --compact-output '.
+	| def children(node): node | [recurse(.nodes + .floating_nodes | .[])]; .
+	| children(.) as $all
+	| ($all | map(select(.type == "output" and .percent != null))) as $outputs
+	| ($all | map(select(.type == "workspace"))) as $workspaces
+	| $outputs | map(.name as $output | { ($output): ($workspaces | map(select(.output == $output))) })
+	| add
+	| def focused(node): (children(node) | any(.focused)); .
+	| with_entries({ "key": .key, "value": (.value | map(.focused = focused(.))) })
+	'
+}
+
+getinfo
+swaymsg -t subscribe '["workspace"]' --monitor | {
+	while read -r event; do
+		getinfo
+	done
+}

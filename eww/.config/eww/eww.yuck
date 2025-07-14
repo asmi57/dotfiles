@@ -1,12 +1,11 @@
-
-
 (include "widgets/workspaces.yuck")
 (include "widgets/time.yuck")
 (include "widgets/memory.yuck")
 (include "widgets/battery.yuck")
 (include "widgets/mode.yuck")
-
-
+(include "widgets/fanprofile.yuck")
+(include "widgets/temperature.yuck")
+(include "widgets/cpu.yuck")
 
 (defwindow bar
 	:monitor 0
@@ -14,8 +13,6 @@
 	:stacking "fg"
 	:focusable false
 	:geometry (geometry
-		:x "0%"
-		:y "0%"
 		:width "100%"
 		:height "1%"
 		:anchor "bottom center"
@@ -33,13 +30,16 @@
 		(box
 			:orientation "h"
 			:halign "center"
-			:space-evenly false
+			:space-evenly true
 			(time)
 		)
 		(box
 			:orientation "h"
 			:halign "end"
 			:space-evenly false
+			(fanprofile)
+			(temperature)
+			(cpu)
 			(memory)
 			(battery)
 		)
