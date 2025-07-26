@@ -2,11 +2,10 @@
 (defpoll datetime
 	:initial "??:??"
 	:interval "0.1s"
-	"date +'%m/%d - %H:%M:%S'"
+	"date +'%h %d - %I:%M:%S'"
 )
 (defwidget time []
 	(eventbox
-		:onclick "ewwclicktime"
 		(label
 			:text datetime
 		)
