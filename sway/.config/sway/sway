@@ -1,11 +1,17 @@
 
 output eDP-1 {
 	mode 2560x1600@165.000Hz
+	pos 0 0
 	# mode 1920x1200@165.000Hz
 	# mode 1920x1080@165.000Hz
 }
 output HDMI-* {
 	mode 1920x1080@60.000Hz
+	pos 2560 0
+}
+output DP-* {
+	mode 1920x1080@60.000Hz
+	pos 2560 0
 }
 
 input * {

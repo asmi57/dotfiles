@@ -1,0 +1,9 @@
+#!/bin/env bash
+
+line=$(grim -g "$(slurp)" - | zbarimg - 2> /dev/null | head -n1 | grep "QR-Code:" | cut -c 9-)
+if [ -n "$line" ]; then
+	echo $line | wl-copy
+	notify-send "Copied QR contents to clipboard"
+else
+	notify-send "Failed to scan QR Code"
+fi

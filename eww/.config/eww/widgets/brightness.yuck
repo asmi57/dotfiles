@@ -1,0 +1,14 @@
+
+
+(defvar brightness_percent 40)
+(defwidget brightness []
+	(scale
+		:class "brightness"
+		:value brightness_percent
+		:orientation "h"
+		:tooltip "Bri: ${brightness_percent}%"
+		:min 0
+		:max 100
+		:onchange "bri {}"
+	)
+)

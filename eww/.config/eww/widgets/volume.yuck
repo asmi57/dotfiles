@@ -1,0 +1,19 @@
+
+
+(defpoll volume_percent
+	:initial 0
+	:interval "2h"
+	"vol -n"
+)
+(defwidget volume []
+	(scale
+		:class "volume"
+		:value volume_percent
+		:orientation "h"
+		:tooltip "Vol: ${volume_percent}%"
+		:min 0
+		:max 100
+		:flipped true
+		:onchange "vol {} -n"
+	)
+)

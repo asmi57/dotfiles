@@ -1,6 +1,7 @@
 @import "gruv.scss";
 
 * {
+  all: unset;
   background-color: $bg0;
   color: $fg0;
   font-size: 24px;
@@ -72,4 +73,16 @@
 
 .mode {
   background: $red-dim;
+}
+
+.volume, .brightness {
+  trough {
+    background-color: $bg2;
+    min-height: 10px;
+    min-width: 150px;
+    margin: 0px 50px;
+    highlight {
+      background: $fg0;
+    }
+  }
 }

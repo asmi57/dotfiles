@@ -1,19 +1,56 @@
 #!/bin/env sh
 
-if [[ $1 ]]; then
-	pactl set-sink-volume @DEFAULT_SINK@ $1%
-fi
+for arg in $@; do
+	if   [[ "$arg" == "-e" ]]; then
+		ewwflag="true"
+	elif [[ "$arg" == "-n" ]]; then
+		notifflag="true"
+	elif [[ "$arg" =~ ^(-|\+)?[0-9]+$ ]]; then
+		if [[ -z "${volarg+x}" ]]; then
+			volarg=$arg
+		else
+			echo too many arguments
+			exit
+		fi
+	else
+		echo argument \'$arg\' not recognized
+		exit
+	fi
+done
 
-id=$XDG_RUNTIME_DIR/volume_notif_id
-
-vol=$(pamixer --get-volume)
-t=1000
-
-icon="audio-speakers-symbolic"
-
-if [[ -f $id ]]; then
-	notify-send "$vol" -t $t --icon=$icon -p -r $(cat $id) | sudo tee $id
+if [[ ! -z "${volarg+x}" ]]; then
+	if pactl set-sink-volume @DEFAULT_SINK@ $volarg%; then
+		true
+	else
+		exit
+	fi
+	volume=$(pamixer --get-volume)
+	echo $volume
 else
-	touch $XDG_RUNTIME_DIR/media_notif_id
-	notify-send "$vol" -t $t --icon=$icon -p | sudo tee $id
+	volume=$(pamixer --get-volume)
+	echo $volume
 fi
+
+if [[ -z "${ewwflag+x}" ]]; then
+	eww update "volume_percent=$volume"
+fi
+
+if [[ -z "${notifflag+x}" ]]; then
+	idfile=$XDG_RUNTIME_DIR/volume_notif_id
+	vol=$(pamixer --get-volume)
+	t=4000
+	icon="audio-speakers-symbolic"
+
+	if stat $idfile > /dev/null; then
+		id=$(cat $idfile)
+	else
+		echo $idfile doesnt exist
+	fi
+
+	if [[ -z "${id+x}" ]]; then
+		notify-send "$vol $(cat $idfile)" -t $t --icon=$icon -p | sudo tee $idfile
+	else
+		notify-send "$vol $(cat $idfile)" -t $t --icon=$icon -r $id || rm $idfile
+	fi
+fi
+

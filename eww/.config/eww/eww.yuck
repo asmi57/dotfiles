@@ -6,6 +6,8 @@
 (include "widgets/fanprofile.yuck")
 (include "widgets/temperature.yuck")
 (include "widgets/cpu.yuck")
+(include "widgets/volume.yuck")
+(include "widgets/brightness.yuck")
 
 (defwindow bar
 	:monitor 0
@@ -30,8 +32,10 @@
 		(box
 			:orientation "h"
 			:halign "center"
-			:space-evenly true
+			:space-evenly false
+			(volume)
 			(time)
+			(brightness)
 		)
 		(box
 			:orientation "h"
