@@ -1,6 +1,10 @@
 
 
-(defvar brightness_percent 40)
+(defpoll brightness_percent
+	:initial "0"
+	:interval "2h"
+	"bri | cut -d '%' -f 1"
+)
 (defwidget brightness []
 	(scale
 		:class "brightness"

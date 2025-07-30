@@ -48,9 +48,9 @@ if [[ -z "${notifflag+x}" ]]; then
 	fi
 
 	if [[ -z "${id+x}" ]]; then
-		notify-send "$vol $(cat $idfile)" -t $t --icon=$icon -p | sudo tee $idfile
+		notify-send "$vol" -t $t --icon=$icon -p | sudo tee $idfile
 	else
-		notify-send "$vol $(cat $idfile)" -t $t --icon=$icon -r $id || rm $idfile
+		notify-send "$vol" -t $t --icon=$icon -r $id || rm $idfile
 	fi
 fi
 

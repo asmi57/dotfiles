@@ -1,13 +1,6 @@
 set -gx FISH_DIRECTORY "$HOME/.config/fish"
 set -U fish_greeting ""
 
-if [ ! -e /tmp/theme ]
-	touch /tmp/theme
-end
-# echo -n mocha > /tmp/theme
-echo -n gruv > /tmp/theme
-
-
 
 if status is-interactive
 	source $FISH_DIRECTORY/abbreviations.fish
@@ -28,6 +21,20 @@ set -gx XDG_CONFIG_HOME $HOME/.config
 set -gx XDG_DATA_HOME   $HOME/.local/share
 set -gx XDG_CACHE_HOME  $HOME/.local/cache
 set -gx XDG_STATE_HOME  $HOME/.local/state
+
+if false
+	set -gx XDG_CURRENT_DESKTOP  sway
+	set -gx XDG_SESSION_DESKTOP  sway
+	set -gx XDG_SESSION_TYPE wayland
+	set -gx MOZ_ENABLE_WAYLAND 1
+	set -gx QT_QPA_PLATFORM wayland
+	set -gx SDL_VIDEODRIVER wayland
+	set -gx _JAVA_AWT_WM_NONREPARENTING 1
+end
+# set -gx GTK_IM_MODULE wayland
+set -gx QT_IM_MODULE wayland
+set -gx XMODIFIERS "@im=wayland"
+# set -gx SWAYSOCK $(fd --max-depth 1 '^sway-' /run/user/1000/ | grep . > /dev/null && ls /run/user/1000/sway-*)
 
 set -gx EDITOR nvim
 set -gx BACKLIGHT /sys/class/backlight/amdgpu_bl1
@@ -51,12 +58,16 @@ set -gx PATH $PATH /usr/bin/core_perl
 set -gx PATH $PATH /usr/local/bin
 set -gx PATH $PATH /usr/local/sbin
 set -gx PATH $PATH /usr/lib/rustup/bin
-set -gx PATH $PATH $XDG_DATA_HOME/bin
-set -gx PATH $PATH $XDG_DATA_HOME/ghcup/bin
-set -gx PATH $PATH $HOME/.local/bin
-set -gx PATH $PATH $XDG_DATA_HOME/nvim/mason/bin
+
 set -gx PATH $PATH $HOME/.scripts
 set -gx PATH $PATH $HOME/.android/sdk/platform-tools
+set -gx PATH $PATH $HOME/.local/bin
+
+set -gx PATH $PATH $XDG_DATA_HOME/bin
+set -gx PATH $PATH $XDG_DATA_HOME/ghcup/bin
+set -gx PATH $PATH $XDG_DATA_HOME/nvim/mason/bin
+set -gx PATH $PATH $XDG_DATA_HOME/bob/nvim-bin
+
 set -gx PATH $PATH $CEDEV/bin
 set -gx PATH $PATH $CARGO_HOME/bin
 set -gx PATH $PATH $HOME/dev/suckless/bin
