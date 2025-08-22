@@ -10,7 +10,7 @@
 (include "widgets/brightness.yuck")
 
 (defwindow bar
-	:monitor 0
+	:monitor "0x0BC9"
 	:exclusive true
 	:stacking "fg"
 	:focusable false

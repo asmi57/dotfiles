@@ -12,4 +12,5 @@ return {
 	'rust_analyzer',
 	'zls',
 	'ts_ls',
+	'uiua'
 }

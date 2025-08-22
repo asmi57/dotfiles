@@ -2,7 +2,7 @@
 (defpoll datetime
 	:initial "??:??"
 	:interval "0.1s"
-	"date +'%h %d - %I:%M:%S'"
+	"date +'%h %d - %I:%M' | sed 's/ 0\\([0-9]\\)/ \\1/g'"
 )
 (defwidget time []
 	(eventbox

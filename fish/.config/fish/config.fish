@@ -1,5 +1,6 @@
 set -gx FISH_DIRECTORY "$HOME/.config/fish"
-set -U fish_greeting ""
+set -U fish_greeting "----- TODO -----
+$(todo)"
 
 
 if status is-interactive
@@ -72,6 +73,7 @@ set -gx PATH $PATH $CEDEV/bin
 set -gx PATH $PATH $CARGO_HOME/bin
 set -gx PATH $PATH $HOME/dev/suckless/bin
 set -gx PATH $PATH $XDG_CONFIG_HOME/eww/scripts
+set -gx PATH $PATH $XDG_CONFIG_HOME/eww/eww_bluetooth_widget/scripts
 
 set -gx XINITRC $XDG_CONFIG_HOME/X11/xinitrc
 set -gx XAUTHORITY $XDG_CONFIG_HOME/X11/Xauthority
