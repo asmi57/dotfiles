@@ -6,7 +6,6 @@
 	"vol -n"
 )
 (defpoll volume_muted
-	:initial "false"
 	:interval "2h"
 	"pactl get-sink-mute @DEFAULT_SINK@ | grep 'yes' > /dev/null && echo true || echo false"
 )

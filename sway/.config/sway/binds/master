@@ -27,7 +27,7 @@ bindsym Print exec screenclip_sway
 bindsym Ctrl+Print exec sh -c "grim - | wl-copy"
 
 bindsym $mod+b       exec gtk-launch firefox
-bindsym $mod+Shift+b exec gtk-launch school
+bindsym $mod+Shift+b exec gtk-launch college
 
 bindsym $mod+m exec calculator
 bindsym $mod+Shift+m exec desmos

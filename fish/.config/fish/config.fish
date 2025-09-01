@@ -24,17 +24,19 @@ set -gx XDG_CACHE_HOME  $HOME/.local/cache
 set -gx XDG_STATE_HOME  $HOME/.local/state
 
 if false
-	set -gx XDG_CURRENT_DESKTOP  sway
-	set -gx XDG_SESSION_DESKTOP  sway
 	set -gx XDG_SESSION_TYPE wayland
-	set -gx MOZ_ENABLE_WAYLAND 1
 	set -gx QT_QPA_PLATFORM wayland
 	set -gx SDL_VIDEODRIVER wayland
 	set -gx _JAVA_AWT_WM_NONREPARENTING 1
 end
 # set -gx GTK_IM_MODULE wayland
+if false
+set -gx XDG_CURRENT_DESKTOP  sway
+set -gx XDG_SESSION_DESKTOP  sway
+set -gx MOZ_ENABLE_WAYLAND 1
 set -gx QT_IM_MODULE wayland
 set -gx XMODIFIERS "@im=wayland"
+end
 # set -gx SWAYSOCK $(fd --max-depth 1 '^sway-' /run/user/1000/ | grep . > /dev/null && ls /run/user/1000/sway-*)
 
 set -gx EDITOR nvim
@@ -87,8 +89,10 @@ if test -e /tmp/startupflag
 	test $DISPLAY || sway
 end
 
-set -gx http_proxy 		# http://73.253.211.53:8888/
-set -gx https_proxy 	$http_proxy
-set -gx ftp_proxy 		$http_proxy
-set -gx rsync_proxy 	$http_proxy
-set -gx no_proxy 		"localhost,127.0.0.1,localaddress,.localdomain.com"
+if false
+	set -gx http_proxy 		# http://73.253.211.53:8888/
+	set -gx https_proxy 	$http_proxy
+	set -gx ftp_proxy 		$http_proxy
+	set -gx rsync_proxy 	$http_proxy
+	set -gx no_proxy 		"localhost,127.0.0.1,localaddress,.localdomain.com"
+end
