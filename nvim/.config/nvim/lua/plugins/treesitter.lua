@@ -4,8 +4,10 @@ return {
 	config = function()
 		require('nvim-treesitter.configs').setup({
 			auto_install = true,
+			ignore_install = { "latex" },
 			highlight = {
 				enable = true,
+				disable = { 'tex', 'latex' },
 				additional_vim_regex_highlighting = false,
 			},
 			ensure_installed = { 'vim', 'vimdoc', },

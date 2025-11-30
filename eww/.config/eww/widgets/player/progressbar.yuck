@@ -1,0 +1,41 @@
+
+(defpoll song_percent
+	:initial "0"
+	:interval "1s"
+	"ewwsonginfo percent"
+)
+(defpoll song_progress
+	:initial "0:00"
+	:interval "1s"
+	"ewwsonginfo progress"
+)
+(defpoll song_length
+	:initial "0:00"
+	:interval "1s"
+	"ewwsonginfo length"
+)
+
+(defwidget progressbar []
+	(box
+		:class "songprogress"
+		:orientation "h"
+		:halign "center"
+		:hexpand true
+		:valign "center"
+		:vexpand true
+		:space-evenly false
+		(label
+			:text "${song_progress}"
+		)
+		(scale
+			:value "${song_percent ?: "0"}"
+			:orientation "h"
+			:min 0
+			:max 100
+			:onchange "ewwsonginfo setpercent {}"
+		)
+		(label
+			:text "${song_length}"
+		)
+	)
+)

@@ -1,0 +1,5 @@
+#!/bin/env sh
+
+mullvad status | head -n1 | tr '[:upper:]' '[:lower:]'
+
+

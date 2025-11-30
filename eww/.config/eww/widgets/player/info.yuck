@@ -1,0 +1,44 @@
+
+(defpoll songinfotitle
+	:initial ""
+	:interval "0.5s"
+	"ewwsonginfo title"
+)
+(defpoll songinfoartist
+	:initial ""
+	:interval "0.5s"
+	"ewwsonginfo artist"
+)
+(defpoll songinfoalbum
+	:initial ""
+	:interval "0.5s"
+	"ewwsonginfo album"
+)
+
+(defwidget info []
+	(box
+		:class "info"
+		:orientation "v"
+		:halign "baseline"
+		:hexpand false
+		:valign "baseline"
+		:vexpand false
+		:space-evenly true
+		(label
+			:class "title ${songinfotitle == "" ? "empty" : ""}"
+			:justify "left"
+			:text "${songinfotitle}"
+		)
+		(label
+			:class "${songinfotitle == "" ? "album" : "artist"}"
+			:justify "left"
+			:text "${songinfotitle == "" ? "No Media" : songinfoartist}"
+		)
+		(label
+			:visible false
+			:class "album"
+			:justify "left"
+			:text "${songinfoalbum}"
+		)
+	)
+)

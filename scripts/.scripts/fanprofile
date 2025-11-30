@@ -1,7 +1,6 @@
 #!/bin/env sh
 
 modes=$(fw-fanctrl print list | tail -n +2 | cut -c 3-)
-fw-fanctrl use $(printf "$modes" | rofi -dmenu -p 'Fan Profile')
-
+printf "$modes" | rofi -dmenu -p 'Fan Profile' | xargs fw-fanctrl use
 eww update fanprofileVar="$(fw-fanctrl print current | head -n 1 | cut -d"'" -f2)"
 

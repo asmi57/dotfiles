@@ -1,13 +1,14 @@
-(include "widgets/workspaces.yuck")
-(include "widgets/time.yuck")
-(include "widgets/memory.yuck")
-(include "widgets/battery.yuck")
-(include "widgets/mode.yuck")
-(include "widgets/fanprofile.yuck")
-(include "widgets/temperature.yuck")
-(include "widgets/cpu.yuck")
-(include "widgets/volume.yuck")
-(include "widgets/brightness.yuck")
+(include "widgets/bar/mullvad.yuck")
+(include "widgets/bar/workspaces.yuck")
+(include "widgets/bar/time.yuck")
+(include "widgets/bar/memory.yuck")
+(include "widgets/bar/battery.yuck")
+(include "widgets/bar/mode.yuck")
+(include "widgets/bar/fanprofile.yuck")
+(include "widgets/bar/temperature.yuck")
+(include "widgets/bar/cpu.yuck")
+(include "widgets/bar/volume.yuck")
+(include "widgets/bar/brightness.yuck")
 
 (defwindow bar
 	:monitor "0x0BC9"
@@ -41,6 +42,7 @@
 			:orientation "h"
 			:halign "end"
 			:space-evenly false
+			(mullvad)
 			(fanprofile)
 			(temperature)
 			(cpu)
@@ -50,3 +52,49 @@
 	)
 )
 
+(include "widgets/player/art.yuck")
+(include "widgets/player/info.yuck")
+(include "widgets/player/progressbar.yuck")
+(include "widgets/player/controls.yuck")
+
+(defwindow player
+	:monitor "0x0BC9"
+	:exclusive true
+	:stacking "overlay"
+	:geometry (geometry
+		:width "60%"
+		:height "40%"
+		:anchor "center"
+	)
+	:focusable false
+	(box
+		:class "player"
+		:orientation "h"
+		:halign "fill"
+		:hexpand true
+		:valign "fill"
+		:vexpand true
+		:space-evenly false
+		:style ""
+		(box
+			:orientation "v"
+			:halign "center"
+			:hexpand true
+			:valign "center"
+			:vexpand true
+			:space-evenly false
+			(art)
+		)
+		(box
+			:orientation "v"
+			:halign "center"
+			:hexpand true
+			:valign "center"
+			:vexpand true
+			:space-evenly false
+			(info)
+			(progressbar)
+			(controls)
+		)
+	)
+)

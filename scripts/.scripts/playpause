@@ -1,58 +1,8 @@
 #!/bin/env sh
 
-if [[ $(playerctl -l) == "" ]]; then
-	echo "No players"
-	exit
-fi
+player="$(getplayer)"
+playerctl -l | grep "^$player$" > /dev/null || exit
+playerctl -p "$player" play-pause
 
-playerfile="$XDG_RUNTIME_DIR/current_player"
-
-if [[ ! -f $playerfile ]]; then
-	touch $playerfile
-fi
-
-if [[ $(cat $playerfile) == "" ]]; then
-	echo "playerdontexist" > $playerfile
-fi
-
-player=$(cat $playerfile)
-if [[ ! $(playerctl -p $player status 2> /dev/null) ]]; then
-	echo "Player \"$player\" does not exist"
-	new=$(playerctl -l | head -n 1)
-	player=$new
-	echo $player > $playerfile
-	echo "New player selected: \"$player\""
-fi
-
-status=$(playerctl -p $player status | tr -d '\n')
-
-playerctl -p $player play-pause
-
-
-icon=""
-if [[ $status == "Playing" ]]; then
-	status="Paused"
-	icon="media-playback-pause"
-elif [[ $status == "Paused"  ]]; then
-	status="Playing"
-	icon="media-playback-start"
-fi
-
-msg=\
-"Player $player status: $status
-$(playerctl -p $player metadata xesam:title) - $(playerctl -p $player metadata xesam:album)
-$(playerctl -p $player metadata xesam:artist)"
-
-id_file=$XDG_RUNTIME_DIR/media_notif_id
-
-if [[ -z $(cat $id_file) ]]; then rm $id_file; fi
-
-if [[ -f $id_file ]]; then
-	notify-send "$msg" --icon=$icon -r $(cat $id_file)
-else
-	touch $id_file
-	notify-send "$msg" --icon=$icon -p | sudo tee $id_file
-fi
-
-
-
+sleep 0.3
+playstatusnotify

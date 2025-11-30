@@ -1,0 +1,15 @@
+
+
+(deflisten artpath
+	:initial ""
+	"getart -l"
+)
+(defwidget art []
+	(box
+		:class "art"
+		(image
+			:path "${artpath}"
+			:image-width 480
+		)
+	)
+)

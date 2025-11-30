@@ -8,85 +8,131 @@
   font-family: "jetbrainsmono";
 }
 
-.symbol { background: transparent; padding-right: 10px; }
-.value { background: transparent; }
+.bar {
+  .symbol { background: transparent; padding-right: 10px; }
+  .value { background: transparent; }
 
-.battery {
-  color: $green;
-  background: $bg2;
-  padding: 0px 10px;
-  margin-left: 10px;
-  .symbol {
+  .battery {
     color: $green;
-  }
-}
-.memory {
-  background: $bg2;
-  padding: 0px 10px;
-  margin: 0px 10px;
-  .symbol {
-    color: $aqua;
-  }
-}
-.fanprofile {
-  background: $bg2;
-  padding: 0px 10px;
-  margin: 0px 10px;
-  .symbol {
-    color: $purple;
-    font-size: 24px;
-  }
-}
-.cpu {
-  background: $bg2;
-  padding: 0px 10px;
-  margin: 0px 10px;
-  .symbol {
-    color: $orange;
-    font-size: 24px;
-  }
-}
-.temperature {
-  background: $bg2;
-  padding: 0px 10px;
-  margin: 0px 10px;
-  .symbol {
-    color: $red;
-    font-size: 24px;
-  }
-}
-.outputs {
-  .workspaces {
-    background: rgba(black, 0);
-    padding-right: 10px;
-    .workspace {
-      background: $bg1;
-      padding: 0px 10px;
-      margin: 0px 0px;
+    background: $bg2;
+    padding: 0px 10px;
+    margin-left: 10px;
+    .symbol {
+      color: $green;
     }
-    .focused {
+  }
+  .memory {
+    background: $bg2;
+    padding: 0px 10px;
+    margin: 0px 10px;
+    .symbol {
+      color: $aqua;
+    }
+  }
+  .fanprofile {
+    background: $bg2;
+    padding: 0px 10px;
+    margin: 0px 10px;
+    .symbol {
+      color: $purple;
+      font-size: 24px;
+    }
+  }
+  .cpu {
+    background: $bg2;
+    padding: 0px 10px;
+    margin: 0px 10px;
+    .symbol {
+      color: $orange;
+      font-size: 24px;
+    }
+  }
+  .temperature {
+    background: $bg2;
+    padding: 0px 10px;
+    margin: 0px 10px;
+    .symbol {
+      color: $red;
+      font-size: 24px;
+    }
+  }
+
+  .mullvad {
+    background: $bg2;
+    padding: 0px 10px;
+    margin: 0px 10px;
+    .symbol {
       color: $blue;
-      background: $bg2
+      font-size: 24px;
     }
+  }
+
+  .outputs {
+    .workspaces {
+      background: rgba(black, 0);
+      padding-right: 10px;
+      .workspace {
+        background: $bg1;
+        padding: 0px 10px;
+        margin: 0px 0px;
+      }
+      .focused {
+        color: $blue;
+        background: $bg2
+      }
+    }
+  }
+
+  .mode {
+    background: $red-dim;
+  }
+
+  .volume, .brightness {
+    trough {
+      background-color: $bg2;
+      min-height: 10px;
+      min-width: 150px;
+      margin: 0px 50px;
+      highlight {
+        background: $fg0;
+      }
+    }
+  }
+
+  .muted trough highlight {
+    background: $bg4;
   }
 }
 
-.mode {
-  background: $red-dim;
-}
+.player {
+  border: 1px solid $green;
 
-.volume, .brightness {
-  trough {
-    background-color: $bg2;
-    min-height: 10px;
-    min-width: 150px;
-    margin: 0px 50px;
-    highlight {
-      background: $fg0;
+  .songprogress {
+    trough {
+      margin: 1.0em;
+      background-color: $bg2;
+      min-height: 10px;
+      min-width: 450px;
+      highlight {
+        background: $fg0;
+      }
     }
   }
-}
 
-.muted trough highlight {
-  background: $bg4;
+  .art {
+    padding: 1em;
+  }
+  .info {
+    .title {
+      font-size: 2em;
+      font-weight: bolder;
+    }
+    .artist {
+      font-size: 1.5em;
+    }
+    .album {
+      font-size: 1em;
+      font-weight: lighter;
+    }
+  }
 }

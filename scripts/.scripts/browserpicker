@@ -1,0 +1,11 @@
+#!/bin/env sh
+
+
+profiles="$HOME/.mozilla/firefox/profiles.ini"
+grep '^Name=' $profiles | cut -d'=' -f2 | rofi -dmenu > /tmp/test || echo false > /tmp/test
+selection=$(cat /tmp/test)
+[ "$selection" == 'false' ] && exit
+folder=$(fd "\.$selection\$" $(dirname $profiles) --max-depth 1)
+firefox --profile $folder "$@" &
+rm /tmp/test
+disown

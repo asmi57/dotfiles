@@ -11,5 +11,5 @@
 |#
 
 (defsrc     caps)
-(deflayer _ lctl)
+(deflayer _ mrgt)
 

@@ -2,7 +2,6 @@ local grp = "UserAutocmds"
 local grpid = vim.api.nvim_create_augroup(grp, { clear = true })
 
 
-
 UiuaLspId = nil
 vim.api.nvim_create_autocmd({ "BufAdd", "VimEnter" }, {
 	group = grpid,

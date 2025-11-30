@@ -1,0 +1,22 @@
+
+; 
+; 󰏤
+; 󰈑
+; 󰑟
+; ⏹
+
+
+(defwidget controls []
+	(box
+		:class "controls"
+		:orientation "v"
+		:halign "center"
+		:hexpand false
+		:valign "center"
+		:vexpand true
+		:space-evenly false
+
+		(scale
+		)
+	)
+)

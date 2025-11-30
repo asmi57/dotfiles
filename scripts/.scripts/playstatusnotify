@@ -1,0 +1,34 @@
+#!/bin/env sh
+
+player="$(getplayer)"
+playerctl -l | grep "^$player$" > /dev/null || exit
+status=$(playerctl -p "$player" status | tr -d '\n')
+echo $0 $status
+
+if [[ "$status" == "Playing" ]]; then
+	status="Paused"
+	icon="/usr/share/icons/breeze-dark/actions/32/media-playback-pause.svg"
+elif [[ "$status" == "Paused"  ]]; then
+	status="Playing"
+	icon="/usr/share/icons/breeze-dark/actions/32/media-playback-start.svg"
+fi
+
+msg=\
+"Player $player status: $status
+$(playerctl -p $player metadata xesam:title) - $(playerctl -p $player metadata xesam:album)
+$(playerctl -p $player metadata xesam:artist)"
+
+id_file=$XDG_RUNTIME_DIR/media_notif_id
+
+if [[ -z $(cat $id_file) ]]; then rm $id_file; fi
+
+if [[ -f $id_file ]]; then
+	notify-send "$msg" --icon=$icon -r $(cat $id_file)
+else
+	touch $id_file
+	notify-send "$msg" --icon=$icon -p | sudo tee $id_file
+fi
+
+
+
+

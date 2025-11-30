@@ -23,13 +23,15 @@ bindsym $mod+Return       exec $terminal
 bindsym $mod+Shift+Return exec $terminal_tmux
 
 # clip screen
-bindsym Print exec screenclip_sway
+bindsym Print exec screenclip
 bindsym Ctrl+Print exec sh -c "grim - | wl-copy"
 
 bindsym $mod+b       exec gtk-launch firefox
 bindsym $mod+Shift+b exec gtk-launch college
 
 bindsym $mod+m exec calculator
-bindsym $mod+Shift+m exec desmos
 bindsym $mod+n exec obsidian
 bindsym $mod+Shift+f exec fanprofile
+bindsym $mod+p exec sh -c "eww close player || eww open player"
+
+

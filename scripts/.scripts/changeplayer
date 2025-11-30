@@ -14,7 +14,7 @@ for player in p:
     titles.append(meta)
 
 choices = '\n'.join(titles) #.replace('(', '\\(').replace(')', '\\)')
-choice = popen(f"printf '{choices}' | rofi -dmenu").read(-1).strip()
+choice = popen(f"printf \"{choices}\" | rofi -dmenu").read(-1).strip()
 
 file = os.environ["XDG_RUNTIME_DIR"] + "/current_player"
 open(file, "w").write(players[choice])

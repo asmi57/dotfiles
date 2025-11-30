@@ -1,36 +1,10 @@
 #!/bin/env sh
 
-if [[ $(playerctl -l) == "" ]]; then
-	echo "No players"
-	exit
-fi
+player=$(getplayer)
+playerctl -l | grep "^$player$" || exit
 
-playerfile="$XDG_RUNTIME_DIR/current_player"
-
-if [[ ! -f $playerfile ]]; then
-	touch $playerfile
-fi
-
-if [[ $(cat $playerfile) == "" ]]; then
-	echo "playerdontexist" > $playerfile
-fi
-
-player=$(cat $playerfile)
-if [[ ! $(playerctl -p $player status 2> /dev/null) ]]; then
-	echo "Player \"$player\" does not exist"
-	new=$(playerctl -l | head -n 1)
-	player=$new
-	echo $player > $playerfile
-	echo "New player selected: \"$player\""
-fi
-
-
-player=$(cat $XDG_RUNTIME_DIR/current_player)
 playerctl -p $player next
 playerctl -p $player play
 
-
-
-
-
-
+sleep 0.3
+playstatusnotify

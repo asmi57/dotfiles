@@ -1,0 +1,108 @@
+#!/bin/env sh
+
+bin="$(basename $0)"
+player=$XDG_RUNTIME_DIR/current_player
+
+usage() {
+	echo "usage: $bin [subcommand]"
+	echo ""
+	echo "possible subcommands:"
+	echo "	$bin progress"
+	echo "	$bin percent"
+	echo "	$bin setpercent [percent]"
+	echo "	$bin title"
+	echo "	$bin album"
+	echo "	$bin artist"
+	echo "	$bin length"
+
+}
+
+timeformat() {
+	len="$1"
+	seconds="$(expr $len % 60)"
+	minutes="$(expr $(expr $len / 60) % 60)"
+	hours="$(expr $len / 3600)"
+
+	if [[ "$seconds" -lt "10" ]]; then
+		seconds="0$seconds"
+	fi
+	if [[ "$hours" -gt "0" ]]; then
+		hours="$hours:"
+		if [[ "$minutes" -lt "10" ]]; then
+			minutes="0$minutes"
+		fi
+	fi
+
+	echo "$hours$minutes:$seconds"
+}
+
+player="$(getplayer)"
+playerctl -l 2>/dev/null | grep "^$player$" > /dev/null || exit 0
+
+progress() {
+	seconds="$(playerctl -p "$player" position | cut -d'.' -f1)"
+	timeformat $seconds
+}
+
+percent() {
+	seconds="$(playerctl -p "$player" position | cut -d'.' -f1)"
+	lenmillis="$(playerctl -p "$player" metadata mpris:length)"
+	len="$(expr $lenmillis / 1000000)"
+	echo "$(expr $(expr $seconds \* 100) / $len)"
+}
+
+setpercent() {
+	p="$1"
+	lenmillis="$(playerctl -p "$player" metadata mpris:length)"
+	stampmillis="$(fish -c "math $1 \* $lenmillis")"
+	stamp="$(fish -c "math $stampmillis / 100000000")"
+	playerctl -p "$player" position "$stamp"
+}
+
+length() {
+	millis="$(playerctl -p "$player" metadata mpris:length)"
+	len="$(expr $millis / 1000000)"
+	timeformat $len
+}
+
+title() {
+	playerctl -p "$player" metadata xesam:title
+}
+
+album() {
+	playerctl -p "$player" metadata xesam:album
+}
+
+artist() {
+	playerctl -p "$player" metadata xesam:artist
+}
+
+
+
+if   [[ "$1" == "progress" ]]; then
+	progress
+elif [[ "$1" == "percent" ]]; then
+	percent
+elif [[ "$1" == "title" ]]; then
+	title
+elif [[ "$1" == "album" ]]; then
+	album
+elif [[ "$1" == "artist" ]]; then
+	artist
+elif [[ "$1" == "length" ]]; then
+	length
+elif [[ "$1" == "setpercent" ]]; then
+	if [[ "$2" == "" ]]; then
+		echo -e "expected argument after '$1'\n"
+		usage
+		exit
+	fi
+	setpercent $2
+else
+	echo -e "error: unexpected argument '$1'\n"
+	usage
+	exit
+fi
+
+
+

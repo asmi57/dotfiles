@@ -1,36 +1,48 @@
 #!/bin/env sh
 
-artdir=/home/asmi/media/AlbumArt
-flag=$artdir/downloading
-player=$(cat $XDG_RUNTIME_DIR/current_player)
+coversdir="$HOME/media/AlbumArt/"
+flag="/tmp/getart"
 
-if [ ! -d $artdir ]; then
-	mkdir $artdir
-fi
+player="$(getplayer)"
+playerctl -l | grep "^$player$" > /dev/null || echo "$coversdir/.default" exit
 
-arturl=$(playerctl -p $player metadata mpris:artUrl)
-if [ $? -ne 0 ]; then
-	echo failed to get art url
-	ln -sf $artdir/default $artdir/current
-	exit
-fi
 
-filename=$(echo $arturl | rev | cut -d'/' -f1 | rev)
-filepath=$artdir/$filename
+download() {
+    coverurl=$(playerctl -p $player metadata mpris:artUrl)
+    cover=${coverurl##*/}
+    coverfile="$(realpath "$coversdir/$cover")"
 
-if [ -f $filepath ] && [ $(du $filepath | cut -f1) -gt 0 ]; then
-	echo file already exists at $filepath
+    if [[ ! -d $coversdir ]]; then
+        mkdir $coversdir
+    fi
+    if [[ ! -e $coverfile ]]; then
+        if [[ -e $flag ]]; then
+            echo "download in progress" > /dev/stderr
+        else
+            touch $flag
+			curl "$coverurl" -o "$coverfile"
+            rm $flag
+        fi
+    fi
+    echo $coverfile
+}
+
+usage() {
+    echo "USAGE"
+    echo "$(basename "$0"): [-l]"
+}
+
+if [[ $# -eq 0 ]]; then
+    download
+elif [[ $# -eq 1 ]]; then
+    if [ "$1" == "-l" ]; then
+        while true; do
+            download
+            sleep 0.5
+        done
+    else
+        usage
+    fi
 else
-
-	if [ -f $flag ]; then
-		echo download already in progress
-		exit
-	fi
-	touch $flag
-	curl $arturl > $filepath
-	rm $flag
+    usage
 fi
-
-ln -sf $filepath $artdir/current
-
-

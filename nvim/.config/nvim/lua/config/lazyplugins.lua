@@ -11,10 +11,7 @@ return {
 	require('plugins.indent-blankline'),
 	require('plugins.treesitter'),
 	require('plugins.leap'),
-	-- require('plugins.rust'),
 	require('plugins.colorizer'),
 	require('plugins.tinyglimmer'),
-	require('plugins.dap'),
 	require('plugins.pico8'),
-	'Apeiros-46B/uiua.vim'
 }

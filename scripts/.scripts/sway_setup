@@ -18,7 +18,7 @@ update_colors &
 
 tmux source ~/.config/tmux/tmux.conf &
 
-ood=$(sudo pacman -Sy > /dev/null && pacman -Qu | wc -l | grep -o "^[0-9]\+")
+ood="$(sudo pacman -Sy > /dev/null && pacman -Qu | wc -l | grep -o "^[0-9]\+")"
 if [[ "$ood" == "0" ]]; then
 	notify-send "All packages are up to date"
 else

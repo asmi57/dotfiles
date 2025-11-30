@@ -1,0 +1,23 @@
+(defpoll mullvadVar
+	:initial "OFF"
+	:interval "1s"
+	"ewwmullvad"
+)
+(defwidget mullvad []
+	(button
+		:onclick "ewwmullvad | grep dis && mullvad connect || mullvad disconnect"
+		(box
+			:halign "center"
+			:space-evenly false
+			:class "mullvad"
+			(label
+				:class "symbol"
+				:text "V"
+			)
+			(label
+				:class "value"
+				:text "${mullvadVar}"
+			)
+		)
+	)
+)

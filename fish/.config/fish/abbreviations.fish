@@ -24,6 +24,7 @@ abbr --add v   nvim
 abbr --add bt   bluetuith
 abbr --add spot ncspot
 abbr --add pm   pulsemixer
+abbr --add yay  paru
 
 abbr --add g     git
 abbr --add gs    git status

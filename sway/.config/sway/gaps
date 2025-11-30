@@ -1,7 +1,6 @@
 #!/bin/sh
-
-gaps outer 15px
-gaps inner 15px
+gaps outer 0
+gaps inner 0
 
 # gaps binds
 bindsym $mod+o gaps outer all plus 2

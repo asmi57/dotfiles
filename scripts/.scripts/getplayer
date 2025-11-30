@@ -1,0 +1,27 @@
+#!/bin/env sh
+
+if [[ $(playerctl -l 2> /dev/null) == "" ]]; then
+	echo "No active players" > /dev/stderr
+	exit
+fi
+
+playerfile="$XDG_RUNTIME_DIR/current_player"
+
+if [[ ! -f $playerfile ]]; then
+	touch $playerfile
+fi
+
+if [[ $(cat $playerfile) == "" ]]; then
+	echo "playerdontexist" > $playerfile
+fi
+
+player=$(cat $playerfile)
+if [[ ! $(playerctl -p $player status 2> /dev/null) ]]; then
+	echo "Player \"$player\" does not exist" > /dev/stderr
+	new=$(playerctl -l | head -n 1)
+	player=$new
+	echo $player > $playerfile
+	echo "New player selected: \"$player\"" > /dev/stderr
+fi
+
+echo $player
