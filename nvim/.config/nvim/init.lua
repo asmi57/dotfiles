@@ -4,7 +4,7 @@ LanguageServers = {
 	'lua_ls',
 	'rust_analyzer',
 	'jdtls',
+	'pylsp',
+	'hls',
 }
 require("config")
-
-

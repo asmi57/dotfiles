@@ -18,6 +18,7 @@ input * {
 	accel_profile "flat"
 	natural_scroll disabled
 	dwt enabled
+	pointer_accel 0.6
 }
 
 # gruvbox

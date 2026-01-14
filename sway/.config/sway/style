@@ -23,4 +23,6 @@ blur enable
 blur_passes 3
 blur_radius 10
 
-
+#                        border    background  text
+client.focused           #98971A   #98971A     #98971A
+client.unfocused         #282828   #282828     #282828

@@ -51,7 +51,7 @@ cmp.setup({
 			else
 				fallback()
 			end
-		end, { "i", "s"}),
+		end, { "i", "s" }),
 	},
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
