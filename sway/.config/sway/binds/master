@@ -30,7 +30,7 @@ bindsym $mod+b       exec gtk-launch firefox
 bindsym $mod+Shift+b exec gtk-launch college
 
 bindsym $mod+m exec calculator
-bindsym $mod+n exec obsidian
+bindsym $mod+n exec fish -c 'open "obsidian://open?vault=notes&file=100%20Todo%2F000%20TODOBASE.base"'
 bindsym $mod+Shift+f exec fanprofile
 bindsym $mod+p exec sh -c "eww close player || eww open player"
 

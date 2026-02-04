@@ -40,9 +40,13 @@ elif [[ $# -eq 1 ]]; then
             download
             sleep 0.5
         done
+	elif [ "$1" == "-h" ]; then
+        usage
     else
         usage
+		exit -1
     fi
 else
     usage
+	exit -1
 fi

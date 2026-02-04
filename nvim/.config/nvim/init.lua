@@ -6,5 +6,6 @@ LanguageServers = {
 	'jdtls',
 	'pylsp',
 	'hls',
+	'gopls'
 }
 require("config")

@@ -1,6 +1,6 @@
 set -gx FISH_DIRECTORY "$HOME/.config/fish"
-set -U fish_greeting "----- TODO -----
-$(todo)"
+# set -U fish_greeting "----- TODO ----- 
+# $(todo)"
 
 
 if status is-interactive

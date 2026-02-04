@@ -33,7 +33,6 @@ return {
 	},
 
 	config = function()
-
 		vim.api.nvim_create_autocmd('LspAttach', { callback = LspOnAttach })
 
 		require("mason").setup({ ui = { border = "single" } })
@@ -41,7 +40,6 @@ return {
 		local cmp_caps = require("cmp_nvim_lsp").default_capabilities()
 		local capabilities = vim.tbl_deep_extend("force", {}, caps, cmp_caps)
 
-		vim.lsp.enable(LanguageServers, true)
 		local default_opts = { capabilities = capabilities }
 		for _, lsp in pairs(LanguageServers) do
 			local ok, config = pcall(require, "plugins.lspconfig.settings." .. lsp)
